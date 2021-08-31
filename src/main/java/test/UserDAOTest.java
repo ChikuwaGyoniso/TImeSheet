@@ -6,8 +6,8 @@ import model.User;
 
 public class UserDAOTest {
 	public static void main(String[] arga) {
-		testFindByLogin1();
-		testFindByLogin2();
+		testFindByLogin1();//ユーザーが見つかる場合
+		testFindByLogin2();//ユーザーが見つからない場合
 	}
 
 	public static void testFindByLogin1() {
