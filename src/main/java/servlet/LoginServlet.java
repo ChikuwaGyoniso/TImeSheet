@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		} else {
 			//リダイレクト
-			response.sendRedirect("/TimeSheetApp/LoginServlet");
+			response.sendRedirect("/TimeSheetApp/WelcomeServlet");
 		}
 	}
 }
