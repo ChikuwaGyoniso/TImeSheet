@@ -33,6 +33,9 @@ public class RegisterServlet extends HttpServlet {
 		User user = new User(userId, pass, mail, name);
 		RegisterLogic rl = new RegisterLogic();
 		rl.execute(user);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/registerOK.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }
