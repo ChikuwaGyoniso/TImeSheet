@@ -12,6 +12,8 @@
   パスワード:<input type="password" name="pass"><br>
   <input type="submit" value="ログイン">
   </form>
-  <button onclick="/TimeSheetApp/RegisterServlet">新規ユーザー</button>
+<a href="/TimeSheetApp/RegisterServlet">
+    <button type="button">新規ユーザー</button>
+</a>
 </body>
 </html>
