@@ -36,6 +36,8 @@ public class RegisterServlet extends HttpServlet {
 				mail.length() == 0 || mail == null ||
 				name.length() == 0 || name == null) {
 			request.setAttribute("errorMsg", "ユーザー登録に失敗しました");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
+			dispatcher.forward(request, response);
 		} else {
 
 			User user = new User(userId, pass, mail, name);
