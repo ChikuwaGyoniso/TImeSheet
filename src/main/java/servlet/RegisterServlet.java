@@ -25,17 +25,25 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+
 		String userId = request.getParameter("userId");
 		String pass = request.getParameter("pass");
 		String mail = request.getParameter("mail");
 		String name = request.getParameter("name");
 
-		User user = new User(userId, pass, mail, name);
-		RegisterLogic rl = new RegisterLogic();
-		rl.execute(user);
+		//入力値チェック
+		if (userId.length() == 0 || userId == null || pass.length() == 0 || pass == null ||
+				mail.length() == 0 || mail == null ||
+				name.length() == 0 || name == null) {
+			request.setAttribute("errorMsg", "ユーザー登録に失敗しました");
+		} else {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/registerOK.jsp");
-		dispatcher.forward(request, response);
+			User user = new User(userId, pass, mail, name);
+			RegisterLogic rl = new RegisterLogic();
+			rl.execute(user);
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/registerOK.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
-
 }
