@@ -12,6 +12,6 @@
 		<c:out value="${userId}" />
 		さん、登録しました
 	</p>
-	<a href="/TimeSheetApp">トップへ</a>
+	<a href="/TimeSheetApp/WelcomeServlet">トップへ</a>
 </body>
 </html>
