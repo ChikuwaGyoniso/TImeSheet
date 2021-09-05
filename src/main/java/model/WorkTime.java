@@ -1,18 +1,21 @@
 package model;
 
-public class Time {
-	private String Date;
-	private String Start_Time;
-	private String End_Time;
-	private String Work_Contents;
-	private String Nomal_Time;
-	private String Midnight_Time;
-	private String Holiday_Time;
-	private String Holiday_Midnight_Time;
-	private String Sum_WorkTime;
+import java.sql.Time;
 
-	public Time(String Date, String Start_Time, String End_Time, String Work_Contents, String Nomal_Time, String Midnight_Time,
-			String Holiday_Time, String Holiday_Midnight_Time, String Sum_WorkTime) {
+public class WorkTime {
+
+	private String Date;
+	private Time Start_Time;
+	private Time End_Time;
+	private String Work_Contents;
+	private Time Nomal_Time;
+	private Time Midnight_Time;
+	private Time Holiday_Time;
+	private Time Holiday_Midnight_Time;
+	private Time Sum_WorkTime;
+
+	public WorkTime(String Date, Time Start_Time, Time End_Time, String Work_Contents, Time Nomal_Time, Time Midnight_Time,
+			Time Holiday_Time, Time Holiday_Midnight_Time, Time Sum_WorkTime) {
 		this.Date = Date;
 		this.Start_Time = Start_Time;
 		this.End_Time = End_Time;
@@ -28,12 +31,12 @@ public class Time {
 		return Date;
 	}
   //業務開始時間
-	public String getStart_Time() {
+	public Time getStart_Time() {
 		return Start_Time;
 
 	}
   //業務終了時間
-	public String getEnd_Time() {
+	public Time getEnd_Time() {
 		return End_Time;
 	}
   //仕事内容
@@ -41,23 +44,23 @@ public class Time {
 		return Work_Contents;
 	}
   //通常（休日および深夜の業務時間を除いた）時間
-	public String getNomal_Time() {
+	public Time getNomal_Time() {
 		return Nomal_Time;
 	}
   //深夜の労働時間
-	public String getMidnight_Time() {
+	public Time getMidnight_Time() {
 		return Midnight_Time;
 	}
   //休日の労働時間
-	public String getHoliday_Time() {
+	public Time getHoliday_Time() {
 		return Holiday_Time;
 	}
   //休日深夜の労働時間
-	public String getHoliday_Midnight_Time() {
+	public Time getHoliday_Midnight_Time() {
 		return Holiday_Midnight_Time;
 	}
   //労働時間の合計
-	public String getSum_WorkTime() {
+	public Time getSum_WorkTime() {
 		return Sum_WorkTime;
 	}
 
