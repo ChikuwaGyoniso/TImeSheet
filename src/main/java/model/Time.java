@@ -1,18 +1,18 @@
 package model;
 
-public class WorkTime {
+public class Time {
 	private String Date;
-	private WorkTime Start_Time;
-	private WorkTime End_Time;
+	private String Start_Time;
+	private String End_Time;
 	private String Work_Contents;
-	private WorkTime Nomal_Time;
-	private WorkTime Midnight_Time;
-	private WorkTime Holiday_Time;
-	private WorkTime Holiday_Midnight_Time;
-	private WorkTime Sum_WorkTime;
+	private String Nomal_Time;
+	private String Midnight_Time;
+	private String Holiday_Time;
+	private String Holiday_Midnight_Time;
+	private String Sum_WorkTime;
 
-	public WorkTime(String Date, WorkTime Start_Time, WorkTime End_Time, String Work_Contents, WorkTime Nomal_Time, WorkTime Midnight_Time,
-			WorkTime Holiday_Time, WorkTime Holiday_Midnight_Time, WorkTime Sum_WorkTime) {
+	public Time(String Date, String Start_Time, String End_Time, String Work_Contents, String Nomal_Time, String Midnight_Time,
+			String Holiday_Time, String Holiday_Midnight_Time, String Sum_WorkTime) {
 		this.Date = Date;
 		this.Start_Time = Start_Time;
 		this.End_Time = End_Time;
@@ -28,12 +28,12 @@ public class WorkTime {
 		return Date;
 	}
   //業務開始時間
-	public WorkTime getStart_Time() {
+	public String getStart_Time() {
 		return Start_Time;
 
 	}
   //業務終了時間
-	public WorkTime getEnd_Time() {
+	public String getEnd_Time() {
 		return End_Time;
 	}
   //仕事内容
@@ -41,23 +41,23 @@ public class WorkTime {
 		return Work_Contents;
 	}
   //通常（休日および深夜の業務時間を除いた）時間
-	public WorkTime getNomal_Time() {
+	public String getNomal_Time() {
 		return Nomal_Time;
 	}
   //深夜の労働時間
-	public WorkTime getMidnight_Time() {
+	public String getMidnight_Time() {
 		return Midnight_Time;
 	}
   //休日の労働時間
-	public WorkTime getHoliday_Time() {
+	public String getHoliday_Time() {
 		return Holiday_Time;
 	}
   //休日深夜の労働時間
-	public WorkTime getHoliday_Midnight_Time() {
+	public String getHoliday_Midnight_Time() {
 		return Holiday_Midnight_Time;
 	}
   //労働時間の合計
-	public WorkTime getSum_WorkTime() {
+	public String getSum_WorkTime() {
 		return Sum_WorkTime;
 	}
 
