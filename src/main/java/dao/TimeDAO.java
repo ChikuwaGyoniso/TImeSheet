@@ -18,7 +18,7 @@ public class TimeDAO {
 			Class.forName(DB_DRIVER);
 
 			String sql = "INSERT INTO TIMESHEET (USER_ID,DATE, START_TIME, END_TIME, WORK_CONTENTS,NOMAL_TIME,"
-					+ " MIDNIGHT_TIME, HOLIDAY_TIME, HOLIDAY_MIDNIGHT_TIME, SUM_WORKTIME VALUES (?,?,?,?,?,?,?,?,?,?)";
+					+ " MIDNIGHT_TIME, HOLIDAY_TIME, HOLIDAY_MIDNIGHT_TIME, WORKTIME_SUM VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 
@@ -31,7 +31,7 @@ public class TimeDAO {
 			pstmt.setTime(7, worktime.getMidnight_Time());
 			pstmt.setTime(8, worktime.getHoliday_Time());
 			pstmt.setTime(9, worktime.getHoliday_Midnight_Time());
-			pstmt.setTime(10, worktime.getSum_WorkTime());
+			pstmt.setTime(10, worktime.getWorkTime_Sum());
 
 			int result = pstmt.executeUpdate();
 
