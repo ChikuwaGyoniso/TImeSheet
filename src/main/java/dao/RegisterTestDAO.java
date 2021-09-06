@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 import model.User;
 
-
 public class RegisterTestDAO {
 	private final String JDBC_URL = "jdbc:mysql://localhost:3306/sampleappdb?characterEncording=UTF-8";
 	private final String DB_USER = "Sampleuser";
