@@ -17,19 +17,20 @@ public class TImeDAO {
 		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
 			Class.forName(DB_DRIVER);
 
-			String sql = "INSERT INTO TIMESHEET (DATE, START_TIME, END_TIME, WORK_CONTENTS, NOMAL_TIME, MIDNIGHT_TIME, HOLIDAY_TIME, HOLIDAY_MIDNIGHT_TIME, SUM_WORKTIME VALUES (?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO TIMESHEET (USER_ID,DATE, START_TIME, END_TIME, WORK_CONTENTS, NOMAL_TIME, MIDNIGHT_TIME, HOLIDAY_TIME, HOLIDAY_MIDNIGHT_TIME, SUM_WORKTIME VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			//修正の可能性あり
-			pstmt.setString(1, worktime.getDate());
-			pstmt.setTime(2, worktime.getStart_Time());
-			pstmt.setTime(3, worktime.getEnd_Time());
-			pstmt.setString(4, worktime.getWork_Contents());
-			pstmt.setTime(5, worktime.getNomal_Time());
-			pstmt.setTime(6, worktime.getMidnight_Time());
-			pstmt.setTime(7, worktime.getHoliday_Time());
-			pstmt.setTime(8, worktime.getHoliday_Midnight_Time());
-			pstmt.setTime(9, worktime.getSum_WorkTime());
+
+			pstmt.setString(1, worktime.getUserId());
+			pstmt.setString(2, worktime.getDate());
+			pstmt.setTime(3, worktime.getStart_Time());
+			pstmt.setTime(4, worktime.getEnd_Time());
+			pstmt.setString(5, worktime.getWork_Contents());
+			pstmt.setTime(6, worktime.getNomal_Time());
+			pstmt.setTime(7, worktime.getMidnight_Time());
+			pstmt.setTime(8, worktime.getHoliday_Time());
+			pstmt.setTime(9, worktime.getHoliday_Midnight_Time());
+			pstmt.setTime(10, worktime.getSum_WorkTime());
 
 			int result = pstmt.executeUpdate();
 
