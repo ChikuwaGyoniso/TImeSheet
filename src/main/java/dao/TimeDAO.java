@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import model.WorkTime;
 
-public class TImeDAO {
+public class TimeDAO {
 	private final String JDBC_URL = "jdbc:mysql://localhost:3306/sampleappdb?characterEncording=UTF-8";
 	private final String DB_USER = "Sampleuser";
 	private final String DB_PASS = "chikuwanoowari458";
