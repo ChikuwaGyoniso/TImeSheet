@@ -12,11 +12,11 @@ public class WorkTime {
 	private Time Midnight_Time;
 	private Time Holiday_Time;
 	private Time Holiday_Midnight_Time;
-	private Time Sum_WorkTime;
+	private Time WorkTime_Sum;
 
 	public WorkTime(String UserId, String Date, Time Start_Time, Time End_Time, String Work_Contents, Time Nomal_Time,
 			Time Midnight_Time,
-			Time Holiday_Time, Time Holiday_Midnight_Time, Time Sum_WorkTime) {
+			Time Holiday_Time, Time Holiday_Midnight_Time, Time WorkTime_Sum) {
 		this.UserId = UserId;
 		this.Date = Date;
 		this.Start_Time = Start_Time;
@@ -26,7 +26,7 @@ public class WorkTime {
 		this.Midnight_Time = Midnight_Time;
 		this.Holiday_Time = Holiday_Time;
 		this.Holiday_Midnight_Time = Holiday_Midnight_Time;
-		this.Sum_WorkTime = Sum_WorkTime;
+		this.WorkTime_Sum = WorkTime_Sum;
 	}
 
 	public String getUserId() {
@@ -75,8 +75,8 @@ public class WorkTime {
 	}
 
 	//労働時間の合計
-	public Time getSum_WorkTime() {
-		return Sum_WorkTime;
+	public Time getWorkTime_Sum() {
+		return WorkTime_Sum;
 	}
 
 }
