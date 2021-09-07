@@ -29,6 +29,7 @@ public class RegisterTimeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		ChangeStringTime changetime = new ChangeStringTime();
 
+		//リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
 
 		String userid = request.getParameter("userid");
