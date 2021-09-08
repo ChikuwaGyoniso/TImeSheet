@@ -50,7 +50,7 @@ public class RegisterTimeServlet extends HttpServlet {
 				|| holiday_time == null ||
 				holiday_midnight_time == null || worktime_sum == null) {
 			request.setAttribute("errorMsg", "労働時間登録に失敗しました");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/timesheet.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/timesheet.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			WorkTime worktime = new WorkTime(userid, date, start_time, end_time, work_contents, nomal_time,
@@ -58,7 +58,7 @@ public class RegisterTimeServlet extends HttpServlet {
 			TimeRegisterLogic trl = new TimeRegisterLogic();
 			trl.execute(worktime);
 			request.setAttribute("successMsg", "労働時間登録に成功しました");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/timesheet.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/timesheet.jsp");
 			dispatcher.forward(request, response);
 		}
 	}
