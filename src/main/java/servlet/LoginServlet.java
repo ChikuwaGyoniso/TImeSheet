@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("userId", userId);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/TimeSheetApp/RegisterTimeServlet");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/timesheet.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			//リダイレクト
