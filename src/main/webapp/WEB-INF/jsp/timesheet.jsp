@@ -8,6 +8,7 @@
 <title>TimeSheet</title>
 
 </head>
+
 <body>
 	<p>
 		ようこそ
@@ -56,6 +57,11 @@
 			<p>${successMsg}</p>
 		</c:otherwise>
 	</c:choose>
-	<a href="/TimeSheetApp/WelcomeServlet">トップへ</a>
+	<a href="/TimeSheetApp/UserDateTableServlet">
+		<button type="button">一覧表示</button>
+	</a>
+	<a href="/TimeSheetApp/WelcomeServlet">
+		<button type="button">記入完了</button>
+	</a>
 </body>
 </html>
