@@ -53,7 +53,7 @@
 				<!-- worktime_sumを自動計算にしたい -->
 				<td><input type="time" name="start_time" onChange="calc();"></td>
 				<td><input type="time" name="end_time" onChange="calc();"></td>
-				<td><input type="time" name="nomal_time"></td>
+				<td><input type="text" name="nomal_time"></td>
 				<td><input type="time" name="midnight_time" value="00:00"></td>
 				<td><input type="time" name="holiday_time" value="00:00"></td>
 				<td><input type="time" name="holiday_midnight_time"
