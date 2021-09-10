@@ -6,7 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <title>TimeSheet</title>
-
+<head>
+    <script>
+        function calc() {
+            k1 = timesheet.start_time.value + ":";
+            k2 = timesheet.end_time.value + ":";
+            s1 = k1.split(":");
+            s2 = k2.split(":");
+            v1 = 60 * parseInt(s1[0]) + parseInt(s1[1]);
+            v2 = 60 * parseInt(s2[0]) + parseInt(s2[1]);
+            sabun = Math.abs(v1 - v2)
+            xhh = Math.floor(sabun / 60);
+            xmm = sabun % 60;
+            timesheet.nomal_time.value = xhh + ":" + xmm
+        }
+    </script>
+</head>
 </head>
 
 <body>
@@ -16,7 +31,7 @@
 		さん
 	</p>
 	<p>業務終了には定時の終了時間を入力してください</p>
-	<form action="RegisterTimeServlet" method="post">
+	<form action="RegisterTimeServlet" method="post" name="timesheet">
 		ユーザーID：<input type="text" name="userid" value="${userId }">
 		<table border="1">
 			<tr>
@@ -35,10 +50,10 @@
 							<option>${i}日</option>
 						</c:forEach>
 				</select></td>
-				<!-- nomal_timeとworktime_sumを自動計算にしたい -->
-				<td><input type="time" name="start_time" value="00:00"></td>
-				<td><input type="time" name="end_time" value="00:00"></td>
-				<td><input type="time" name="nomal_time" value="00:00"></td>
+				<!-- worktime_sumを自動計算にしたい -->
+				<td><input type="time" name="start_time" onChange="calc();"></td>
+				<td><input type="time" name="end_time" onChange="calc();"></td>
+				<td><input type="time" name="nomal_time"></td>
 				<td><input type="time" name="midnight_time" value="00:00"></td>
 				<td><input type="time" name="holiday_time" value="00:00"></td>
 				<td><input type="time" name="holiday_midnight_time"
@@ -46,8 +61,8 @@
 				<td><input type="time" name="worktime_sum">
 			</tr>
 		</table>
-		<input type="text" name="work_contents" size="30"
-			value="業務内容を入力してください"> <input type="submit" value="送信"><br>
+		<textarea name="work_contents" rows="5" cols="100"></textarea>
+		 <input type="submit" value="送信"><br>
 	</form>
 	<c:choose>
 		<c:when test="${not empty errorMsg}">
