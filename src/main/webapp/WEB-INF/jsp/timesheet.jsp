@@ -7,20 +7,20 @@
 <meta charset="UTF-8">
 <title>TimeSheet</title>
 <head>
-    <script>
-        function timecalc1() {
-            k1 = timesheet.start_time.value + ":";
-            k2 = timesheet.end_time.value + ":";
-            s1 = k1.split(":");
-            s2 = k2.split(":");
-            v1 = 60 * parseInt(s1[0]) + parseInt(s1[1]);
-            v2 = 60 * parseInt(s2[0]) + parseInt(s2[1]);
-            sabun = Math.abs(v1 - v2)
-            xhh = Math.floor(sabun / 60);
-            xmm = sabun % 60;
-            timesheet.nomal_time.value = "0" + xhh + ":" + xmm
-        }
-    </script>
+<script>
+	function timecalc1() {
+		k1 = timesheet.start_time.value + ":";
+		k2 = timesheet.end_time.value + ":";
+		s1 = k1.split(":");
+		s2 = k2.split(":");
+		v1 = 60 * parseInt(s1[0]) + parseInt(s1[1]);
+		v2 = 60 * parseInt(s2[0]) + parseInt(s2[1]);
+		sabun = Math.abs(v1 - v2)
+		xhh = Math.floor(sabun / 60);
+		xmm = sabun % 60;
+		timesheet.nomal_time.value = "0" + xhh + ":" + xmm
+	}
+</script>
 </head>
 </head>
 
@@ -42,7 +42,7 @@
 				<th>深夜</th>
 				<th>休日</th>
 				<th>休日深夜</th>
-				<th>労働時間合計</th>
+				<th>合計</th>
 			</tr>
 			<tr>
 				<td><select name="date">
@@ -51,18 +51,18 @@
 						</c:forEach>
 				</select></td>
 				<!-- worktime_sumを自動計算にしたい -->
-				<td><input type="time" name="start_time" onChange="timecalc1();"></td>
+				<td><input type="time" name="start_time"
+					onChange="timecalc1();"></td>
 				<td><input type="time" name="end_time" onChange="timecalc1();"></td>
-				<td><input type="text" name="nomal_time"></td>
-				<td><input type="time" name="midnight_time" value="00:00"></td>
+				<td><input type="text" name="nomal_time" readonly="readonly"></td>
+				<td><input type="time" name="midnight_time"value="00:00"></td>
 				<td><input type="time" name="holiday_time" value="00:00"></td>
-				<td><input type="time" name="holiday_midnight_time"
-					value="00:00"></td>
-				<td><input type="time" name="worktime_sum">
+				<td><input type="time" name="holiday_midnight_time" value="00:00"></td>
+				<td><input type="text" name="worktime_sum" readonly="readonly">
 			</tr>
 		</table>
 		<textarea name="work_contents" rows="5" cols="100"></textarea>
-		 <input type="submit" value="送信"><br>
+		<input type="submit" value="送信"><br>
 	</form>
 	<c:choose>
 		<c:when test="${not empty errorMsg}">
