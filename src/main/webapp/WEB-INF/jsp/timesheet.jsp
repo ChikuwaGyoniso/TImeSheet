@@ -18,7 +18,7 @@
             sabun = Math.abs(v1 - v2)
             xhh = Math.floor(sabun / 60);
             xmm = sabun % 60;
-            timesheet.nomal_time.value = xhh + ":" + xmm
+            timesheet.nomal_time.value = "0" + xhh + ":" + xmm
         }
     </script>
 </head>
