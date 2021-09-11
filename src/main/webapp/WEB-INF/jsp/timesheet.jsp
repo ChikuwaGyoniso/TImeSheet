@@ -15,11 +15,13 @@
 		s2 = k2.split(":");
 		v1 = 60 * parseInt(s1[0]) + parseInt(s1[1]);
 		v2 = 60 * parseInt(s2[0]) + parseInt(s2[1]);
-		sabun = Math.abs(v1 - v2)
+		sabun = Math.abs(v1 - v2);
 		xhh = Math.floor(sabun / 60);
 		xmm = sabun % 60;
-		timesheet.nomal_time.value = "0" + xhh + ":" + xmm
+	    timesheet.nomal_time.value= "0" + xhh + ":" + xmm;
+
 	}
+
 </script>
 </head>
 </head>
@@ -51,8 +53,7 @@
 						</c:forEach>
 				</select></td>
 				<!-- worktime_sumを自動計算にしたい -->
-				<td><input type="time" name="start_time"
-					onChange="timecalc1();"></td>
+				<td><input type="time" name="start_time" onChange="timecalc1();"></td>
 				<td><input type="time" name="end_time" onChange="timecalc1();"></td>
 				<td><input type="text" name="nomal_time" readonly="readonly"></td>
 				<td><input type="time" name="midnight_time"value="00:00"></td>
