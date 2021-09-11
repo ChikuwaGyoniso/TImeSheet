@@ -8,7 +8,7 @@
 <title>TimeSheet</title>
 <head>
     <script>
-        function calc() {
+        function timecalc1() {
             k1 = timesheet.start_time.value + ":";
             k2 = timesheet.end_time.value + ":";
             s1 = k1.split(":");
@@ -51,8 +51,8 @@
 						</c:forEach>
 				</select></td>
 				<!-- worktime_sumを自動計算にしたい -->
-				<td><input type="time" name="start_time" onChange="calc();"></td>
-				<td><input type="time" name="end_time" onChange="calc();"></td>
+				<td><input type="time" name="start_time" onChange="timecalc1();"></td>
+				<td><input type="time" name="end_time" onChange="timecalc1();"></td>
 				<td><input type="text" name="nomal_time"></td>
 				<td><input type="time" name="midnight_time" value="00:00"></td>
 				<td><input type="time" name="holiday_time" value="00:00"></td>
