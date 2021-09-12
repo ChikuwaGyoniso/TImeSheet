@@ -21,6 +21,28 @@
 	    timesheet.nomal_time.value= "0" + xhh + ":" + xmm;
 
 	}
+	function timecalc2(){
+
+		k1 = timesheet.nomal_time.value;
+		k2 = timesheet.midnight_time.value + ":";
+		k3 = timesheet.holiday_time.value + ":";
+		k4 = timesheet.holiday_midnight_time.value + ":";
+
+		s1 = k1.split(":");
+		s2 = k2.split(":");
+		s3 = k3.split(":");
+		s4 = k4.split(":");
+
+		v1 = 60 * parseInt(s1[0]) + parseInt(s1[1]);
+		v2 = 60 * parseInt(s2[0]) + parseInt(s2[1]);
+		v3 = 60 * parseInt(s3[0]) + parseInt(s3[1]);
+		v4 = 60 * parseInt(s4[0]) + parseInt(s4[1]);
+
+		goukei = Math.abs(v1 + v2 + v3 + v4);
+		xhh = Math.floor(goukei / 60);
+		xmm = goukei % 60;
+		timesheet.worktime_sum.value = "0" + xhh + ":" + xmm;
+	}
 
 </script>
 </head>
@@ -51,13 +73,13 @@
 							<option>${i}日</option>
 						</c:forEach>
 				</select></td>
-				<!-- worktime_sumを自動計算にしたい -->
+
 				<td><input type="time" name="start_time" onChange="timecalc1();"></td>
 				<td><input type="time" name="end_time" onChange="timecalc1();"></td>
 				<td><input type="text" name="nomal_time" readonly="readonly"></td>
-				<td><input type="time" name="midnight_time"value="00:00"></td>
-				<td><input type="time" name="holiday_time" value="00:00"></td>
-				<td><input type="time" name="holiday_midnight_time" value="00:00"></td>
+				<td><input type="time" name="midnight_time" onChange="timecalc2();"></td>
+				<td><input type="time" name="holiday_time" onChange="timecalc2();"></td>
+				<td><input type="time" name="holiday_midnight_time" onChange="timecalc2();"></td>
 				<td><input type="text" name="worktime_sum" readonly="readonly">
 			</tr>
 		</table>
