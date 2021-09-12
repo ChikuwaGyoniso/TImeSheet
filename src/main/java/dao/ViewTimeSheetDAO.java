@@ -47,8 +47,10 @@ public class ViewTimeSheetDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return null;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+			return null;
 		}
 		return list;
 	}
