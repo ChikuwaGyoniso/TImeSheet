@@ -24,7 +24,6 @@
 
 </script>
 </head>
-</head>
 
 <body>
 	<p>
