@@ -55,7 +55,7 @@
 	</p>
 	<p>業務終了には定時の終了時間を入力してください</p>
 	<form action="RegisterTimeServlet" method="post" name="timesheet">
-		ユーザーID：<input type="text" name="userid" value="${userId }">
+		ユーザーID：<input type="text" name="userid" value="${userId }" readonly="readonly">
 		<table border="1">
 			<tr>
 				<th>日にち</th>
