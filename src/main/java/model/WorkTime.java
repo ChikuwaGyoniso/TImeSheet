@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.sql.Time;
 
-public class WorkTime {
+public class WorkTime implements Serializable {
 	private String UserId;
 	private String Date;
 	private Time Start_Time;
@@ -13,6 +14,10 @@ public class WorkTime {
 	private Time Holiday_Time;
 	private Time Holiday_Midnight_Time;
 	private Time WorkTime_Sum;
+
+	public WorkTime() {
+
+	}
 
 	public WorkTime(String UserId, String Date, Time Start_Time, Time End_Time, String Work_Contents, Time Nomal_Time,
 			Time Midnight_Time,
