@@ -94,7 +94,7 @@
 			<p>${successMsg}</p>
 		</c:otherwise>
 	</c:choose>
-	<a href="/TimeSheetApp/UserDateTableServlet">
+	<a href="/TimeSheetApp/ViewTimeSheetServlet">
 		<button type="button">一覧表示</button>
 	</a>
 	<a href="/TimeSheetApp/WelcomeServlet">
