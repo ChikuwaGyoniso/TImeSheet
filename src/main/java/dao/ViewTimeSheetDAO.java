@@ -29,14 +29,14 @@ public class ViewTimeSheetDAO {
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				String userid = rs.getString("UserId");
+				String userid = rs.getString("User_Id");
 				String date = rs.getString("date");
 				Time start_time = rs.getTime("Start_Time");
 				Time end_time = rs.getTime("End_Time");
 				String work_contents = rs.getString("Work_Contents");
 				Time nomal_time = rs.getTime("Nomal_Time");
 				Time midnight_time = rs.getTime("Midnight_Time");
-				Time holiday_time = rs.getTime("Hpliday_Time");
+				Time holiday_time = rs.getTime("Holiday_Time");
 				Time holiday_midnight_time = rs.getTime("Holiday_Midnight_Time");
 				Time worktime_sum = rs.getTime("WorkTime_Sum");
 				worktime = new WorkTime(userid, date, start_time, end_time, work_contents,
