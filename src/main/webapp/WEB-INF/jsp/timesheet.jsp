@@ -40,7 +40,7 @@
 		v3 = 60 * parseInt(s3[0]) + parseInt(s3[1]);
 		v4 = 60 * parseInt(s4[0]) + parseInt(s4[1]);
 
-		goukei = Math.abs(v1 + v2 + v3 + v4) - rest ;
+		goukei = Math.abs(v1 + v2 + v3 + v4);
 		xhh = Math.floor(goukei / 60);
 		xmm = goukei % 60;
 		timesheet.worktime_sum.value = "0" + xhh + ":" + xmm;
