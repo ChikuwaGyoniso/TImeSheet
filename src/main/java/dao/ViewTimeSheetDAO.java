@@ -9,6 +9,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.User;
 import model.WorkTime;
 
 public class ViewTimeSheetDAO {
@@ -17,17 +18,18 @@ public class ViewTimeSheetDAO {
 	private final String DB_PASS = "chikuwanoowari458";
 	private final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
 
-	public List<WorkTime> findAll(WorkTime worktime) {
+	public List<WorkTime> findAll(User user) {
 		List<WorkTime> list = new ArrayList<>();
 		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
 			Class.forName(DB_DRIVER);
 			String sql = "SELECT * FROM timesheet WHERE USER_ID = ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 
-			pstmt.setString(1, worktime.getUserId());
+			pstmt.setString(1, user.getUserId());
 
 			ResultSet rs = pstmt.executeQuery();
 
+			WorkTime worktime = new WorkTime();
 			while (rs.next()) {
 				String userid = rs.getString("User_Id");
 				String date = rs.getString("date");
