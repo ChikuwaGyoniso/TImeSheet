@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +12,6 @@ import java.util.List;
 
 import model.User;
 import model.WorkTime;
-
 public class ViewTimeSheetDAO {
 	private final String JDBC_URL = "jdbc:mysql://localhost:3306/sampleappdb?cahracterEncording=UTF-8";
 	private final String DB_USER = "Sampleuser";
@@ -32,7 +32,7 @@ public class ViewTimeSheetDAO {
 			WorkTime worktime = new WorkTime();
 			while (rs.next()) {
 				String userid = rs.getString("User_Id");
-				String date = rs.getString("date");
+				Date date = rs.getDate("date");
 				Time start_time = rs.getTime("Start_Time");
 				Time end_time = rs.getTime("End_Time");
 				String work_contents = rs.getString("Work_Contents");
