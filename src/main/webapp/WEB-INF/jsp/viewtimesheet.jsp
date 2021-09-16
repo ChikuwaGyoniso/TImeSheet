@@ -54,5 +54,8 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 	<%
 	}
 	%>
+	<a href="/TimeSheetApp/TimeSheetServlet">
+		<button type="button">記入に戻る</button>
+	</a>
 </body>
 </html>
