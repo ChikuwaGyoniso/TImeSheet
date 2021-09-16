@@ -1,11 +1,12 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Time;
 
 public class WorkTime implements Serializable {
 	private String UserId;
-	private String Date;
+	private Date Date;
 	private Time Start_Time;
 	private Time End_Time;
 	private String Work_Contents;
@@ -19,7 +20,7 @@ public class WorkTime implements Serializable {
 
 	}
 
-	public WorkTime(String UserId, String Date, Time Start_Time, Time End_Time, String Work_Contents, Time Nomal_Time,
+	public WorkTime(String UserId, Date Date, Time Start_Time, Time End_Time, String Work_Contents, Time Nomal_Time,
 			Time Midnight_Time,
 			Time Holiday_Time, Time Holiday_Midnight_Time, Time WorkTime_Sum) {
 		this.UserId = UserId;
@@ -39,7 +40,7 @@ public class WorkTime implements Serializable {
 	}
 
 	//日付
-	public String getDate() {
+	public Date getDate() {
 		return Date;
 	}
 
