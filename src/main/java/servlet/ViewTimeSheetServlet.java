@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import model.User;
 import model.ViewTimeSheetLogic;
 import model.WorkTime;
 
@@ -19,14 +21,47 @@ public class ViewTimeSheetServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		WorkTime worktime = new WorkTime();
+		User user = new User();
 
 		ViewTimeSheetLogic viewlogic = new ViewTimeSheetLogic();
-		List<WorkTime> worktimelist = viewlogic.execute(worktime);
+		List<WorkTime> worktimelist = viewlogic.execute(user);
+
+		request.setAttribute("worktimelist", worktimelist);
+
+		//ログインしているかの確認
+		HttpSession session = request.getSession();
+		User loginUser = (User) session.getAttribute("loginUser");
+
+		if (loginUser == null) {//ログインしていない
+			response.sendRedirect("/WEB-INF/jsp/timesheet.jsp");
+		} else {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/viewtimesheet.jsp");
+			dispatcher.forward(request, response);
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		request.setCharacterEncoding("UTF-8");
+
+		String userid = request.getParameter("userid");
+
+		if (userid != null && userid.length() != 0) {
+			HttpSession session = request.getSession();
+			User loginUser = (User) session.getAttribute("loginuser");
+		} else {
+			request.setAttribute("errorMsg", "ユーザーIDが異なります");
+		}
+
+		User user = new User(userid);
+
+		ViewTimeSheetLogic viewlogic = new ViewTimeSheetLogic();
+		List<WorkTime> worktimelist = viewlogic.execute(user);
 
 		request.setAttribute("worktimelist", worktimelist);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/viewtimesheet.jsp");
 		dispatcher.forward(request, response);
-	}
 
+	}
 }
