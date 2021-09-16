@@ -96,9 +96,10 @@
 			<p>${successMsg}</p>
 		</c:otherwise>
 	</c:choose>
-	<a href="/TimeSheetApp/ViewTimeSheetServlet">
-		<button type="button">一覧表示</button>
-	</a>
+	<form action="/TimeSheetApp/ViewTimeSheetServlet" method="post">
+	   <input type="text" name="userid" value="${userId }" readonly="readonly"><br>
+		<input type="submit" value="一覧表示">
+	</form>
 	<a href="/TimeSheetApp/WelcomeServlet">
 		<button type="button">記入完了</button>
 	</a>
