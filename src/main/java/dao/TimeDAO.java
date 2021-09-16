@@ -23,7 +23,7 @@ public class TimeDAO {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, worktime.getUserId());
-			pstmt.setString(2, worktime.getDate());
+			pstmt.setDate(2, worktime.getDate());
 			pstmt.setTime(3, worktime.getStart_Time());
 			pstmt.setTime(4, worktime.getEnd_Time());
 			pstmt.setString(5, worktime.getWork_Contents());
