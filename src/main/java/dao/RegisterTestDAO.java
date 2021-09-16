@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -76,7 +77,7 @@ public class RegisterTestDAO {
 
 			if(rs.next()) {
 				String userid = rs.getString("USER_ID");
-				String date = rs.getString("DATE");
+				Date date = rs.getDate("DATE");
 				Time start_time = rs.getTime("START_TIME");
 				Time end_time = rs.getTime("END_TIME");
 				String work_contents = rs.getString("WORK_CONTENTS");
