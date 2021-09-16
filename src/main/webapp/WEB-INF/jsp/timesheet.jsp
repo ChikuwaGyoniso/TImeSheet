@@ -86,7 +86,7 @@
 			</tr>
 		</table>
 		<textarea name="work_contents" rows="5" cols="100"></textarea>
-		<input type="submit" value="送信"><br>
+		<input type="submit" value="登録"><br>
 	</form>
 	<c:choose>
 		<c:when test="${not empty errorMsg}">
