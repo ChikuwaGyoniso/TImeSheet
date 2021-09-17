@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 public class ChangeStringDate {
-	public static Date changeDate(String strDate) throws IllegalArgumentException {
+	public Date changeDate(String strDate) throws IllegalArgumentException {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
 		java.util.Date date = new java.util.Date();
 
