@@ -1,5 +1,6 @@
 package test;
 
+import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -17,7 +18,7 @@ public class TimeDAOTest {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
 		LocalTime lt_time = LocalTime.parse("08:40", dtf);
 		Time time = Time.valueOf(lt_time);
-		WorkTime worktime = new WorkTime("testUser", "1日", time, time, "テスト", time, time, time, time, time);
+		WorkTime worktime = new WorkTime("testUser", Date.valueOf("2021-09-15"), time, time, "テスト", time, time, time, time, time);
 		RegisterTestDAO dao = new RegisterTestDAO();
 		TimeDAO timedao = new TimeDAO();
 		//テストTimeを仮登録
