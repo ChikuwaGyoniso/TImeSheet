@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.Time;
 
 import javax.servlet.RequestDispatcher;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.ChangeStringDate;
 import model.ChangeStringTime;
 import model.TimeRegisterLogic;
 import model.WorkTime;
@@ -27,13 +29,15 @@ public class RegisterTimeServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		ChangeStringTime changetime = new ChangeStringTime();
+        ChangeStringDate changedate = new ChangeStringDate();
 
 		//リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
 
 		String userid = request.getParameter("userid");
-		String date = request.getParameter("date");
+		Date date = changedate.changeDate(request.getParameter("date"));
 		Time start_time = changetime.ChangeTime(request.getParameter("start_time"));
 		Time end_time = changetime.ChangeTime(request.getParameter("end_time"));
 		String work_contents = request.getParameter("work_contents");
@@ -44,7 +48,7 @@ public class RegisterTimeServlet extends HttpServlet {
 		Time worktime_sum = changetime.ChangeTime(request.getParameter("worktime_sum"));
 
 		//入力値チェック
-		if (userid.length() == 0 || userid == null || date.length() == 0 || date == null || start_time == null
+		if (userid.length() == 0 || userid == null || date == null || start_time == null
 				|| end_time == null ||
 				work_contents.length() == 0 || work_contents == null || nomal_time == null || midnight_time == null
 				|| holiday_time == null ||
