@@ -70,11 +70,7 @@
 				<th>合計</th>
 			</tr>
 			<tr>
-				<td><select name="date">
-						<c:forEach var="i" begin="1" end="31" step="1">
-							<option>${i}日</option>
-						</c:forEach>
-				</select></td>
+				<td><input type="date" name="calendar" max="9999-12-31"></td>
 
 				<td><input type="time" name="start_time" onChange="timecalc1();"></td>
 				<td><input type="time" name="end_time" onChange="timecalc1();"></td>
