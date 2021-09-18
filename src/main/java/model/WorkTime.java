@@ -34,7 +34,7 @@ public class WorkTime implements Serializable {
 		this.Holiday_Midnight_Time = Holiday_Midnight_Time;
 		this.WorkTime_Sum = WorkTime_Sum;
 	}
-
+    //ユーザーID
 	public String getUserId() {
 		return UserId;
 	}

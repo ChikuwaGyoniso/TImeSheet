@@ -5,8 +5,8 @@ public class Login {
 	private String pass;
 
 	public Login(String userId, String pass) {
-		this.userId = userId;
-		this.pass = pass;
+		this.userId = userId;//ユーザーID
+		this.pass = pass;//パスワード
 	}
 
 	public String getUserId() {
