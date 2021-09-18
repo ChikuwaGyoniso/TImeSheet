@@ -31,6 +31,8 @@ public class ViewTimeSheetDAO {
 
 			WorkTime worktime = new WorkTime();
 			while (rs.next()) {
+
+				//SELECTの結果をArrayListに格納
 				String userid = rs.getString("User_Id");
 				Date date = rs.getDate("date");
 				Time start_time = rs.getTime("Start_Time");

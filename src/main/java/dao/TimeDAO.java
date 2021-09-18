@@ -22,6 +22,7 @@ public class TimeDAO {
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 
+			//Insert文中の「？」も使用する値を設定しSQLを完成
 			pstmt.setString(1, worktime.getUserId());
 			pstmt.setDate(2, worktime.getDate());
 			pstmt.setTime(3, worktime.getStart_Time());
@@ -33,8 +34,8 @@ public class TimeDAO {
 			pstmt.setTime(9, worktime.getHoliday_Midnight_Time());
 			pstmt.setTime(10, worktime.getWorkTime_Sum());
 
+			//resultには追加された行数が代入される
 			int result = pstmt.executeUpdate();
-
 			if (result != 1) {
 				return false;
 			}

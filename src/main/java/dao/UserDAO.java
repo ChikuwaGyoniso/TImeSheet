@@ -10,6 +10,7 @@ import model.Login;
 import model.User;
 
 public class UserDAO {
+	//データベース接続に使用する情報
 	private final String JDBC_URL = "jdbc:mysql://localhost:3306/sampleappdb?characterEncording=UTF-8";
 	private final String DB_USER = "Sampleuser";
 	private final String DB_PASS = "chikuwanoowari458";
@@ -17,7 +18,7 @@ public class UserDAO {
 
 	public User findByLogin(Login login) {
 		User user = null;
-
+        //データベースに接続
 		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
 			Class.forName(DB_DRIVER);
 
@@ -27,8 +28,11 @@ public class UserDAO {
 			pstmt.setString(1, login.getUserId());
 			pstmt.setString(2, login.getPass());
 
+			//SELECT文を実行し、結果を取得
 			ResultSet rs = pstmt.executeQuery();
 
+			//一致したユーザーがいた場合
+			//そのユーザーを表すUserインスタンスを生成
 			if (rs.next()) {
 				String userId = rs.getString("USER_ID");
 				String pass = rs.getString("PASS");
@@ -52,13 +56,15 @@ public class UserDAO {
 
 			String sql = "INSERT INTO APPUSER (USER_ID, PASS, MAIL, NAME) VALUES(?,?,?,?)";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+
+			//Insert文中の「？」も使用する値を設定しSQLを完成
 			pstmt.setString(1, user.getUserId());
 			pstmt.setString(2, user.getPass());
 			pstmt.setString(3, user.getMail());
 			pstmt.setString(4, user.getName());
 
+			//resultには追加された行数が代入される
 			int result = pstmt.executeUpdate();
-
 			if (result != 1) {
 				return false;
 			}
