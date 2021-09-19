@@ -15,8 +15,14 @@
   名前：<input type="text" name="name"><br>
   <input type="submit" value="登録">
   </form>
-<c:if test="${not empty errorMsg }">
- <p>${errorMsg }</p>
-</c:if>
+	<c:choose>
+		<c:when test="${not empty errorMsg}">
+			<p>${errorMsg }</p>
+		</c:when>
+		<c:otherwise>
+			<p>${successMsg}</p>
+		</c:otherwise>
+	</c:choose>
+		<a href="/TimeSheetApp/WelcomeServlet">トップへ</a>
 </body>
 </html>
