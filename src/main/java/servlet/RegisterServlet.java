@@ -44,7 +44,8 @@ public class RegisterServlet extends HttpServlet {
 			RegisterLogic rl = new RegisterLogic();
 			rl.execute(user);
 			request.setAttribute("userId", userId);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/registerOK.jsp");
+			request.setAttribute("successMsg", "ユーザー登録に成功しました");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
 			dispatcher.forward(request, response);
 		}
 	}
