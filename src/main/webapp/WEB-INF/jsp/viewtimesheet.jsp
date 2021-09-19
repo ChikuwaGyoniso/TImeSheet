@@ -27,10 +27,12 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 			<th>業務終了</th>
 			<th>業務内容</th>
 			<th>定時</th>
+			<!-- 合計を表示 -->
 			<th>深夜</th>
 			<th>休日</th>
 			<th>休日深夜</th>
 			<th>合計</th>
+			<!-- 合計を表示 -->
 		</tr>
 		<%
 		for (WorkTime worktime : worktimelist) {
@@ -51,6 +53,10 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 		}
 		%>
 	</table>
+	<%
+	} else {
+	%>
+	<p>表示するデータがありません</p>
 	<%
 	}
 	%>
