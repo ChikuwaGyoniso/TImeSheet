@@ -20,7 +20,7 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 	<%
 	if (worktimelist != null && worktimelist.size() > 0) {
 	%>
-	<table border="1">
+	<table border="1" class="unique-table">
 		<tr>
 			<th>日にち</th>
 			<th>業務開始</th>
@@ -46,7 +46,7 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 			<td><%=worktime.getMidnight_Time()%></td>
 			<td><%=worktime.getHoliday_Time()%></td>
 			<td><%=worktime.getHoliday_Midnight_Time()%></td>
-			<td><%=worktime.getEnd_Time()%></td>
+			<td><%=worktime.getWorkTime_Sum()%></td>
 
 		</tr>
 		<%
