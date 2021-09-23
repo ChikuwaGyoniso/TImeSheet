@@ -16,10 +16,15 @@ public class WorkTime implements Serializable {
 	private Time Holiday_Midnight_Time;
 	private Time WorkTime_Sum;
 
+	private Time AllTimeSum;
+
 	public WorkTime() {
 
 	}
-
+    //Nomal_TimeとWorkTime_Sumの合計値のためのメソッド
+	public WorkTime(Time AllTimeSum) {
+		this.AllTimeSum = AllTimeSum;
+	}
 	public WorkTime(String UserId, Date Date, Time Start_Time, Time End_Time, String Work_Contents, Time Nomal_Time,
 			Time Midnight_Time,
 			Time Holiday_Time, Time Holiday_Midnight_Time, Time WorkTime_Sum) {
@@ -84,5 +89,8 @@ public class WorkTime implements Serializable {
 	public Time getWorkTime_Sum() {
 		return WorkTime_Sum;
 	}
-
+    //時間の合計値
+	public Time getAllTimeSum() {
+		return AllTimeSum;
+	}
 }
