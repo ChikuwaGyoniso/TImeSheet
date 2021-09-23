@@ -20,19 +20,17 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 	<%
 	if (worktimelist != null && worktimelist.size() > 0) {
 	%>
-	<table border="1" class="unique-table">
+	<table border="1">
 		<tr>
 			<th>日にち</th>
 			<th>業務開始</th>
 			<th>業務終了</th>
 			<th>業務内容</th>
 			<th>定時</th>
-			<!-- 合計を表示 -->
 			<th>深夜</th>
 			<th>休日</th>
 			<th>休日深夜</th>
 			<th>合計</th>
-			<!-- 合計を表示 -->
 		</tr>
 		<%
 		for (WorkTime worktime : worktimelist) {
@@ -42,11 +40,11 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 			<td><%=worktime.getStart_Time()%></td>
 			<td><%=worktime.getEnd_Time()%></td>
 			<td><%=worktime.getWork_Contents()%></td>
-			<td><%=worktime.getNomal_Time()%></td>
+			<td><%=worktime.getNomal_Time()%></td><!-- 合計を表示 -->
 			<td><%=worktime.getMidnight_Time()%></td>
 			<td><%=worktime.getHoliday_Time()%></td>
 			<td><%=worktime.getHoliday_Midnight_Time()%></td>
-			<td><%=worktime.getWorkTime_Sum()%></td>
+			<td><%=worktime.getWorkTime_Sum()%></td><!-- 合計を表示 -->
 
 		</tr>
 		<%
