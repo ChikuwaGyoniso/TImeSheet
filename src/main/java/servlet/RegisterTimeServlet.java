@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.ChangeStringDate;
 import model.ChangeStringTime;
 import model.TimeRegisterLogic;
 import model.WorkTime;
@@ -31,13 +30,12 @@ public class RegisterTimeServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		ChangeStringTime changetime = new ChangeStringTime();
-        ChangeStringDate changedate = new ChangeStringDate();
 
 		//リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
 
 		String userid = request.getParameter("userid");
-		Date date = changedate.changeDate(request.getParameter("date"));
+		Date date = Date.valueOf(request.getParameter("date"));
 		Time start_time = changetime.ChangeTime(request.getParameter("start_time"));
 		Time end_time = changetime.ChangeTime(request.getParameter("end_time"));
 		String work_contents = request.getParameter("work_contents");
