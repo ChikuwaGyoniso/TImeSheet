@@ -70,7 +70,7 @@
 				<th>合計</th>
 			</tr>
 			<tr>
-				<td><input type="date" name="calendar" max="9999-12-31"></td>
+				<td><input type="date" name="date" max="9999-12-31" required></td>
 
 				<td><input type="time" name="start_time" onChange="timecalc1();"></td>
 				<td><input type="time" name="end_time" onChange="timecalc1();"></td>
