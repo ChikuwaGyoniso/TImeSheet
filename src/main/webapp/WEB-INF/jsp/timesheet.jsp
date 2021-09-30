@@ -20,10 +20,10 @@
 		sabun = Math.abs(v1 - v2) - rest;
 		xhh = Math.floor(sabun / 60);
 		xmm = sabun % 60;
-	    timesheet.nomal_time.value= "0" + xhh + ":" + xmm;
 
+		timesheet.nomal_time.value = xhh + ":" + xmm;
 	}
-	function timecalc2(){
+	function timecalc2() {
 
 		k1 = timesheet.nomal_time.value;
 		k2 = timesheet.midnight_time.value + ":";
@@ -43,9 +43,8 @@
 		goukei = Math.abs(v1 + v2 + v3 + v4);
 		xhh = Math.floor(goukei / 60);
 		xmm = goukei % 60;
-		timesheet.worktime_sum.value = "0" + xhh + ":" + xmm;
+		timesheet.worktime_sum.value = xhh + ":" + xmm;
 	}
-
 </script>
 </head>
 
@@ -57,7 +56,8 @@
 	</p>
 	<p>業務終了には定時の終了時間を入力してください</p>
 	<form action="RegisterTimeServlet" method="post" name="timesheet">
-		ユーザーID：<input type="text" name="userid" value="${userId }" readonly="readonly">
+		ユーザーID：<input type="text" name="userid" value="${userId }"
+			readonly="readonly">
 		<table border="1">
 			<tr>
 				<th>日にち</th>
@@ -72,12 +72,16 @@
 			<tr>
 				<td><input type="date" name="date" max="9999-12-31" required></td>
 
-				<td><input type="time" name="start_time" onChange="timecalc1();"></td>
+				<td><input type="time" name="start_time"
+					onChange="timecalc1();"></td>
 				<td><input type="time" name="end_time" onChange="timecalc1();"></td>
 				<td><input type="text" name="nomal_time" readonly="readonly"></td>
-				<td><input type="time" name="midnight_time" onChange="timecalc2();"></td>
-				<td><input type="time" name="holiday_time" onChange="timecalc2();"></td>
-				<td><input type="time" name="holiday_midnight_time" onChange="timecalc2();"></td>
+				<td><input type="time" name="midnight_time"
+					onChange="timecalc2();"></td>
+				<td><input type="time" name="holiday_time"
+					onChange="timecalc2();"></td>
+				<td><input type="time" name="holiday_midnight_time"
+					onChange="timecalc2();"></td>
 				<td><input type="text" name="worktime_sum" readonly="readonly">
 			</tr>
 		</table>
@@ -93,8 +97,9 @@
 		</c:otherwise>
 	</c:choose>
 	<form action="/TimeSheetApp/ViewTimeSheetServlet" method="post">
-	   <input type="text" name="userid" value="${userId }" readonly="readonly"><br>
-		<input type="submit" value="一覧表示">
+		<input type="text" name="userid" value="${userId }"
+			readonly="readonly"><br> <input type="submit"
+			value="一覧表示">
 	</form>
 	<a href="/TimeSheetApp/WelcomeServlet">
 		<button type="button">記入完了</button>
