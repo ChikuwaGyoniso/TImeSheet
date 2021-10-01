@@ -49,6 +49,7 @@
 		xmm = goukei % 60;
 		timesheet.worktime_sum.value = xhh + ":" + xmm;
 	}
+
 </script>
 </head>
 
@@ -76,16 +77,16 @@
 			<tr>
 				<td><input type="date" name="date" max="9999-12-31" required></td>
 
-				<td><input type="time" name="start_time" onChange="timecalc1();"></td>
-				<td><input type="time" name="end_time" onChange="timecalc1();"></td>
+				<td><input type="time" name="start_time" onChange="timecalc1();" required></td>
+				<td><input type="time" name="end_time" onChange="timecalc1();" required></td>
 				<td><input type="text" name="nomal_time" readonly="readonly"></td>
-				<td><input type="time" name="midnight_time"	onChange="timecalc2();"></td>
-				<td><input type="time" name="holiday_time"	onChange="timecalc2();"></td>
-				<td><input type="time" name="holiday_midnight_time"	onChange="timecalc2();"></td>
+				<td><input type="time" name="midnight_time"	onChange="timecalc2();" required></td>
+				<td><input type="time" name="holiday_time"	onChange="timecalc2();" required></td>
+				<td><input type="time" name="holiday_midnight_time"	onChange="timecalc2();" required></td>
 				<td><input type="text" name="worktime_sum" readonly="readonly">
 			</tr>
 		</table>
-		<textarea name="work_contents" rows="5" cols="100"></textarea>
+		<textarea name="work_contents" rows="5" cols="100" required></textarea>
 		<input type="submit" value="登録"><br>
 	</form>
 	<c:choose>
