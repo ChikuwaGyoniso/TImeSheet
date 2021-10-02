@@ -20,7 +20,7 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 	<%
 	if (worktimelist != null && worktimelist.size() > 0) {
 	%>
-	<table border="1">
+	<table border="1" class="timesheet">
 		<tr>
 			<th>日にち</th>
 			<th>業務開始</th>
@@ -40,17 +40,20 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 			<td><%=worktime.getStart_Time()%></td>
 			<td><%=worktime.getEnd_Time()%></td>
 			<td><%=worktime.getWork_Contents()%></td>
-			<td><%=worktime.getNomal_Time()%></td><!-- 合計を表示 -->
+			<td class="nomal_time"><%=worktime.getNomal_Time()%></td>
+			<!-- 合計を表示 -->
 			<td><%=worktime.getMidnight_Time()%></td>
 			<td><%=worktime.getHoliday_Time()%></td>
 			<td><%=worktime.getHoliday_Midnight_Time()%></td>
-			<td><%=worktime.getWorkTime_Sum()%></td><!-- 合計を表示 -->
+			<td class="worktime_sum"><%=worktime.getWorkTime_Sum()%></td>
+			<!-- 合計を表示 -->
 
 		</tr>
 		<%
 		}
 		%>
 	</table>
+
 	<%
 	} else {
 	%>
@@ -58,6 +61,65 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 	<%
 	}
 	%>
+	<p id="all_nomaltime"></p> <p id="all_worktime_sum"></p>
+	<script>
+		var goukei = 0;
+
+		var xhh = 0;
+		var xmm = 0;
+
+		var count = 0;
+
+		var v1 = 0;
+
+		var timetext = null;
+
+		var nomal_time = document.getElementsByClassName("nomal_time");
+
+		//定時の合計時間の計算
+		for (var i = 0; i < nomal_time.length; i++) {
+			timetext = nomal_time[i].textContent;
+
+			v1 = timetext.split(":");
+
+			goukei = goukei + 60 * parseInt(v1[0]) + parseInt(v1[1]);
+
+		}
+		count = Math.abs(goukei);
+		xhh = Math.floor(count / 60);
+		xmm = count % 60;
+		all_nomaltime.innerHTML = "定時の合計時間："+ xhh + ":" + xmm;
+　
+	   var goukei2 = 0;
+
+	   var xhh2 = 0;
+	   var xmm2 = 0;
+
+	   var count2 = 0;
+
+	   var v2 = 0;
+
+       var timetext2 = null;
+
+	   var worktime_sum = document.getElementsByClassName("worktime_sum");
+
+		//総労働時間の計算
+		for(var l = 0; l < worktime_sum.length; l++){
+			timetext2 = worktime_sum[l].textContent;
+
+			v2 = timetext2.split(":");
+
+			goukei2 = goukei2 + 60 * parseInt(v2[0]) + parseInt(v2[1]);
+
+		}
+
+		count2 = Math.abs(goukei2);
+		xhh2 = Math.floor(count2/ 60);
+		xmm2 = count2 % 60;
+
+		all_worktime_sum.innerHTML = "労働時間の総合計：" + xhh2 + ":" + xmm2;
+	</script>
+
 	<a href="/TimeSheetApp/TimeSheetServlet">
 		<button type="button">記入に戻る</button>
 	</a>
