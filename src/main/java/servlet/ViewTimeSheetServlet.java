@@ -48,8 +48,8 @@ public class ViewTimeSheetServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		String userid = request.getParameter("userid");
-		String year = request.getParameter("year");
-		String month = request.getParameter("month");
+		int year = Integer.parseInt(request.getParameter("year"));
+		int month = Integer.parseInt(request.getParameter("month"));
 
 		if (userid != null && userid.length() != 0) {
 			HttpSession session = request.getSession();
