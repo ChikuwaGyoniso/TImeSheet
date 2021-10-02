@@ -24,14 +24,14 @@ public class ViewTimeSheetDAO {
 		List<WorkTime> list = new ArrayList<>();
 		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
 			Class.forName(DB_DRIVER);
-			String sql = "SELECT * FROM timesheet WHERE USER_ID = ? AND DATE_FORMAT(DATE,'%Y')=? and DATE_FORMAT(DATE, '%m') = ?";
+			String sql = "SELECT * FROM timesheet WHERE USER_ID = ? AND DATE_FORMAT(Date,'%Y')=? AND DATE_FORMAT(Date,'%m')= ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, user.getUserId());
 
-			pstmt.setString(2, ymd.getYear());
+			pstmt.setInt(2, ymd.getYear());
 
-			pstmt.setString(3, ymd.getMonth());
+			pstmt.setInt(3, ymd.getMonth());
 			ResultSet rs = pstmt.executeQuery();
 
 			WorkTime worktime = new WorkTime();
