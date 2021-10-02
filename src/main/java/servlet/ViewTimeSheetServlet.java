@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import model.User;
 import model.ViewTimeSheetLogic;
 import model.WorkTime;
+import model.YearAndMonth;
 
 @WebServlet("/ViewTimeSheetServlet")
 public class ViewTimeSheetServlet extends HttpServlet {
@@ -22,9 +23,10 @@ public class ViewTimeSheetServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		User user = new User();
+		YearAndMonth ymd = new YearAndMonth();
 
 		ViewTimeSheetLogic viewlogic = new ViewTimeSheetLogic();
-		List<WorkTime> worktimelist = viewlogic.execute(user);
+		List<WorkTime> worktimelist = viewlogic.execute(user, ymd);
 
 		request.setAttribute("worktimelist", worktimelist);
 
@@ -46,6 +48,8 @@ public class ViewTimeSheetServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		String userid = request.getParameter("userid");
+		String year = request.getParameter("year");
+		String month = request.getParameter("month");
 
 		if (userid != null && userid.length() != 0) {
 			HttpSession session = request.getSession();
@@ -56,8 +60,10 @@ public class ViewTimeSheetServlet extends HttpServlet {
 
 		User user = new User(userid);
 
+		YearAndMonth ymd = new YearAndMonth(year, month);
+
 		ViewTimeSheetLogic viewlogic = new ViewTimeSheetLogic();
-		List<WorkTime> worktimelist = viewlogic.execute(user);
+		List<WorkTime> worktimelist = viewlogic.execute(user, ymd);
 
 		request.setAttribute("worktimelist", worktimelist);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/viewtimesheet.jsp");
