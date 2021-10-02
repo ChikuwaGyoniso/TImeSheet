@@ -12,21 +12,26 @@ import java.util.List;
 
 import model.User;
 import model.WorkTime;
+import model.YearAndMonth;
+
 public class ViewTimeSheetDAO {
 	private final String JDBC_URL = "jdbc:mysql://localhost:3306/sampleappdb?cahracterEncording=UTF-8";
 	private final String DB_USER = "Sampleuser";
 	private final String DB_PASS = "chikuwanoowari458";
 	private final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
 
-	public List<WorkTime> findAll(User user) {
+	public List<WorkTime> findAll(User user, YearAndMonth ymd) {
 		List<WorkTime> list = new ArrayList<>();
 		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
 			Class.forName(DB_DRIVER);
-			String sql = "SELECT * FROM timesheet WHERE USER_ID = ?";
+			String sql = "SELECT * FROM timesheet WHERE USER_ID = ? AND DATE_FORMAT(DATE,'%Y')=? and DATE_FORMAT(DATE, '%m') = ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, user.getUserId());
 
+			pstmt.setString(2, ymd.getYear());
+
+			pstmt.setString(3, ymd.getMonth());
 			ResultSet rs = pstmt.executeQuery();
 
 			WorkTime worktime = new WorkTime();
