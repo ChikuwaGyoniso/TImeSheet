@@ -98,8 +98,20 @@
 		</c:otherwise>
 	</c:choose>
 	<form action="/TimeSheetApp/ViewTimeSheetServlet" method="post">
-		<input type="text" name="userid" value="${userId }"
-			readonly="readonly"><br> <input type="submit"
+        <select name="year">
+        <c:forEach var="year" begin="2021" end="2199" step="1">
+        <option><c:out value="${year}" /></option>
+        </c:forEach>
+        </select>
+
+       <select name="month">
+        <c:forEach var="month" begin="1" end="12" step="1">
+         <option><c:out value="${month}" /></option>
+        </c:forEach>
+       </select>
+
+		<input type="text" name="userid" value="${userId }"	readonly="readonly"><br>
+		 <input type="submit"
 			value="一覧表示">
 	</form>
 	<a href="/TimeSheetApp/WelcomeServlet">
