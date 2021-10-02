@@ -3,23 +3,23 @@ package model;
 import java.io.Serializable;
 
 public class YearAndMonth implements Serializable {
-	private String year;
-	private String month;
+	private int year;
+	private int month;
 
 	public YearAndMonth() {
 
 	}
 
-	public YearAndMonth(String year, String month) {
+	public YearAndMonth(int year, int month) {
 		this.year = year;
 		this.month = month;
 	}
 
-	public String getYear() {
+	public int getYear() {
 		return year;
 	}
 
-	public String getMonth() {
+	public int getMonth() {
 		return month;
 	}
 }
