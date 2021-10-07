@@ -22,6 +22,7 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 	%>
 	<table border="1" class="timesheet">
 		<tr>
+		    <th></th>
 			<th>日にち</th>
 			<th>業務開始</th>
 			<th>業務終了</th>
@@ -36,6 +37,7 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 		for (WorkTime worktime : worktimelist) {
 		%>
 		<tr>
+		    <td></td>
 			<td><%=worktime.getDate()%></td>
 			<td><%=worktime.getStart_Time()%></td>
 			<td><%=worktime.getEnd_Time()%></td>
@@ -52,6 +54,18 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 		<%
 		}
 		%>
+		<tr>
+		<td>総合計</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td id="all_nomaltime"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td id="all_worktime_sum"></td>
+		</tr>
 	</table>
 
 	<%
@@ -61,7 +75,6 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 	<%
 	}
 	%>
-	<p id="all_nomaltime"></p> <p id="all_worktime_sum"></p>
 	<script>
 		var goukei = 0;
 
@@ -88,7 +101,7 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 		count = Math.abs(goukei);
 		xhh = Math.floor(count / 60);
 		xmm = count % 60;
-		all_nomaltime.innerHTML = "定時の合計時間："+ xhh + ":" + xmm;
+		all_nomaltime.innerHTML =  xhh + ":" + xmm;
 　
 	   var goukei2 = 0;
 
@@ -117,7 +130,7 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 		xhh2 = Math.floor(count2/ 60);
 		xmm2 = count2 % 60;
 
-		all_worktime_sum.innerHTML = "労働時間の総合計：" + xhh2 + ":" + xmm2;
+		all_worktime_sum.innerHTML = xhh2 + ":" + xmm2;
 	</script>
 
 	<a href="/TimeSheetApp/TimeSheetServlet">
