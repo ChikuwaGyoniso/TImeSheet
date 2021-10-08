@@ -10,6 +10,9 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 <head>
 <meta charset="UTF-8">
 <title>TimeSheet</title>
+<script src="https://code.jquery.com/jquery-3.2.1.js"
+	integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+	crossorigin="anonymous"></script>
 </head>
 <body>
 	<p>
@@ -22,7 +25,7 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 	%>
 	<table border="1" class="timesheet">
 		<tr>
-		    <th></th>
+			<th></th>
 			<th>日にち</th>
 			<th>業務開始</th>
 			<th>業務終了</th>
@@ -37,7 +40,7 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 		for (WorkTime worktime : worktimelist) {
 		%>
 		<tr>
-		    <td></td>
+			<td></td>
 			<td><%=worktime.getDate()%></td>
 			<td><%=worktime.getStart_Time()%></td>
 			<td><%=worktime.getEnd_Time()%></td>
@@ -55,16 +58,16 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 		}
 		%>
 		<tr>
-		<td>総合計</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td id="all_nomaltime"></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td id="all_worktime_sum"></td>
+			<td>総合計</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td id="all_nomaltime"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td id="all_worktime_sum"></td>
 		</tr>
 	</table>
 
@@ -132,6 +135,45 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 
 		all_worktime_sum.innerHTML = xhh2 + ":" + xmm2;
 	</script>
+
+	<script>
+	$(function(){
+	    $('#csv').click(function(){
+	        var d = []
+	        var c = []
+	        $('table tr').each(function(i, e){
+	            var dd = []
+	            var cc = []
+	            if(i === 0){
+	                $(this).find('th').each(function(j, el){
+	                    cc.push($(this).text())
+	                })
+	                c.push(cc)
+	            }else{
+	                $(this).find('td').each(function(j, el){
+	                    dd.push($(this).text())
+	                })
+	                d.push(dd)
+	            }
+	        })
+	        var m = $.merge(c,d)
+
+	        var bom =  new Uint8Array([0xEF,0xBB,0xBF])
+
+	        var CSV_data = m.map(function(l){
+	            return l.join(',')
+	        }).join('\r\n')
+	        var blob = new Blob([bom, CSV_data],{type: 'text/csv'})
+	        var url = (window.URL || window.webkitURL).createObjectURL(blob)
+	        var a = document.getElementById('downloader')
+	        a.download = 'data.csv'
+	        a.href = url
+	        $('#downloader')[0].click()
+	    })
+	})
+	</script>
+	<input type="button" id="csv" value="CSV出力">
+	<a style="display: none" id="downloader" href="#"></a>
 
 	<a href="/TimeSheetApp/TimeSheetServlet">
 		<button type="button">記入に戻る</button>
