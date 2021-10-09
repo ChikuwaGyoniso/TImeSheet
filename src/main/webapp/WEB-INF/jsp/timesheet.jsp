@@ -8,6 +8,24 @@
 <title>TimeSheet</title>
 <head>
 <script><%@include file="/WEB-INF/js/timecalc.js" %></script>
+<script>
+function check() {
+	var t1 = timesheet.start_time.value + ":";
+	var t2 = timesheet.end_time.value + ":";
+	var a1 = t1.split(":");
+	var a2 = t2.split(":");
+
+	var v1 = 60 * parseInt(a1[0]) + parseInt(a1[1]);
+	var v2 = 60 * parseInt(a2[0]) + parseInt(a2[1]);
+
+	if (v1 > v2) {
+		alert("開始時間又は終了時間が誤っています");
+		return false;
+	} else {
+		return true;
+	}
+}
+</script>
 </head>
 
 <body>
@@ -44,7 +62,7 @@
 			</tr>
 		</table>
 		<textarea name="work_contents" rows="5" cols="100" required></textarea>
-		<input type="submit" value="登録"><br>
+		<input type="submit" value="登録" onClick="return check();"><br>
 	</form>
 	<c:choose>
 		<c:when test="${not empty errorMsg}">
@@ -68,8 +86,7 @@
        </select>
 
 		<input type="text" name="userid" value="${userId }"	readonly="readonly"><br>
-		 <input type="submit"
-			value="一覧表示">
+		 <input type="submit"value="一覧表示">
 	</form>
 	<a href="/TimeSheetApp/WelcomeServlet">
 		<button type="button">記入完了</button>
