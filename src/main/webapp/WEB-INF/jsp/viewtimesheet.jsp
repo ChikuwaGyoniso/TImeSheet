@@ -166,7 +166,7 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 	        var blob = new Blob([bom, CSV_data],{type: 'text/csv'})
 	        var url = (window.URL || window.webkitURL).createObjectURL(blob)
 	        var a = document.getElementById('downloader')
-	        a.download = 'data.csv'
+	        a.download = 'timesheet.csv'
 	        a.href = url
 	        $('#downloader')[0].click()
 	    })
