@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>TimeSheet</title>
 <head>
-<script><%@include file="/WEB-INF/js/timecalc.js" %></script>
+<script src="/TimeSheetApp/js/timecalc.js"></script>
 <script>
 function check() {
 	var t1 = timesheet.start_time.value + ":";

@@ -78,17 +78,12 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 	<%
 	}
 	%>
-	<script>
-
-	<%@include file="/WEB-INF/js/nomaltimecalc.js" %>
-		　
-	<%@include file="/WEB-INF/js/all_worktimesum.js" %>
-
-	</script>
+	<script src="/TimeSheetApp/js/nomaltimecalc.js" ></script>
+	<script src="/TimeSheetApp/js/all_worktimesum.js" ></script>
 
 	<input type="button" id="csv" value="CSV出力">
 	<a style="display: none" id="downloader" href="#"></a>
-	<script><%@include file="/WEB-INF/js/outputcsv.js" %></script>
+	<script src="/TimeSheetApp/js/outputcsv.js"></script>
 	<a href="/TimeSheetApp/TimeSheetServlet">
 		<button type="button">記入に戻る</button>
 	</a>
