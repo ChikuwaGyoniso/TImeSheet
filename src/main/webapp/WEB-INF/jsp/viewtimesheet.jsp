@@ -25,7 +25,6 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 	%>
 	<table border="1" class="timesheet">
 		<tr>
-			<th></th>
 			<th>日にち</th>
 			<th>業務開始</th>
 			<th>業務終了</th>
@@ -40,7 +39,6 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 		for (WorkTime worktime : worktimelist) {
 		%>
 		<tr>
-			<td></td>
 			<td><%=worktime.getDate()%></td>
 			<td><%=worktime.getStart_Time()%></td>
 			<td><%=worktime.getEnd_Time()%></td>
@@ -59,7 +57,6 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 		%>
 		<tr>
 			<td>総合計</td>
-			<td></td>
 			<td></td>
 			<td></td>
 			<td></td>
