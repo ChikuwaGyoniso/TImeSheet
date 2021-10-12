@@ -7,15 +7,16 @@
 <title>TimeSheet</title>
 <link rel="stylesheet" href="/TimeSheetApp/css/LoginscreenDesign.css">
 </head>
-<h1>タイムシート</h1>
+<header>
+	<h1>タイムシート</h1>
+</header>
 <body>
-	<h3 class="greet">ようこそ！</h3>
 	<div style="text-align: center;">
 		<form action="/TimeSheetApp/LoginServlet" method="post">
 			<p>ユーザーID</p>
-			<input type="text" name="userId"><br>
+			<input type="text" name="userId" size="21"><br>
 			<p>パスワード</p>
-			<input type="password" name="pass"><br>
+			<input type="password" name="pass" size="21"><br>
 			<button type="submit" class="login">ログイン</button>
 		</form>
 	</div>
