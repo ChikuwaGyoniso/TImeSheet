@@ -1,12 +1,12 @@
 @charset "UTF-8";
 
-h1 {
-	border-bottom: 5px solid #4993EB;
+header {
 	font-size: 46px;
+	text-align: center;
+	line-height: 0.95em;
 	font-weight: bold;
-	color : #00FF66;
-	-webkit-text-stroke: 1px #000;
-	color: #00FF66;
+	color: #FFAB91;
+	text-shadow: 0.02em 0.02em 0.02em rgba(0, 0, 0, 1);
 }
 
 p {
@@ -30,7 +30,7 @@ p {
 	box-shadow: 8px 8px 3px #666666;
 	border: 2px solid #000066;
 	position: relative;
-	top:10px;
+	top: 10px;
 }
 
 .login:hover {
@@ -53,7 +53,7 @@ p {
 	box-shadow: 8px 8px 3px #666666;
 	border: 2px solid #000066;
 	position: relative;
-	left:2px;
+	left: 2px;
 }
 
 .button:hover {
