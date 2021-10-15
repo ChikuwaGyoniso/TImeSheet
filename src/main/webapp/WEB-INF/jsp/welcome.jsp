@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/TimeSheetApp/css/LoginscreenDesign.css">
 </head>
 <header>
-	<h1>タイムシート</h1>
+	<h1>TimeSheet</h1>
 </header>
 <body>
 	<div style="text-align: center;">
