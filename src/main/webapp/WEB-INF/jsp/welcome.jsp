@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>TimeSheet</title>
 <link rel="stylesheet" href="/TimeSheetApp/css/LoginscreenDesign.css">
+<link rel="shortcut icon" href="/TimeSheetApp/img/favicon (1).ico">
 </head>
 <header>
 	<h1>TimeSheet</h1>
