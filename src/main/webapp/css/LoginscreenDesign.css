@@ -5,8 +5,9 @@ header {
 	text-align: center;
 	line-height: 0.95em;
 	font-weight: bold;
-	color: #FFAB91;
-	text-shadow: 0.02em 0.02em 0.02em rgba(0, 0, 0, 1);
+	color: #fffff0;
+	text-shadow: 0 0.05em 0.08em rgba(0, 0, 0, 0.7);
+	font-family: "Meiryo";
 }
 
 p {
@@ -62,6 +63,22 @@ p {
 	background: #ffffff;
 }
 
+form {
+	margin: 0px 190px 0px 190px;
+}
+
+input {
+	margin: 0px 190px 0px 190px;
+	width: 250px;
+}
+
 body {
-	background-color: #EEEEEE;
+	background: url(/TimeSheetApp/img/DSC_1228.JPG) no-repeat center center
+		fixed #C0C0C0;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color: rgba(255, 255, 255, 0.8);
+	background-blend-mode: lighten;
 }
