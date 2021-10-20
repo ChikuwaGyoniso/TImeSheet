@@ -35,6 +35,7 @@ function check() {
 		<c:out value="${userId}" />
 		さん
 	</p>
+<h3>・労働時間と作業内容の入力</h3>
 	<p>業務終了には定時の終了時間を入力してください</p>
 	<form action="RegisterTimeServlet" method="post" name="timesheet">
 		ユーザーID：<input type="text" name="userid" value="${userId }"
@@ -62,7 +63,7 @@ function check() {
 				<td><input type="text" name="worktime_sum" readonly="readonly">
 			</tr>
 		</table>
-		<textarea name="work_contents" rows="5" cols="100" required></textarea>
+		<textarea name="work_contents" rows="5" cols="100" placeholder="作業内容を入力してください" required></textarea><br>
 		<input type="submit" value="登録" onClick="return check();"><br>
 	</form>
 	<c:choose>
@@ -73,24 +74,24 @@ function check() {
 			<p>${successMsg}</p>
 		</c:otherwise>
 	</c:choose>
+	<h3>・特定年月のデータをテーブル表示する</h3>
 	<form action="/TimeSheetApp/ViewTimeSheetServlet" method="post">
         <select name="year">
         <c:forEach var="year" begin="2021" end="2199" step="1">
         <option><c:out value="${year}" /></option>
         </c:forEach>
         </select>
-
        <select name="month">
         <c:forEach var="month" begin="1" end="12" step="1">
          <option><c:out value="${month}" /></option>
         </c:forEach>
        </select>
-
-		<input type="text" name="userid" value="${userId }"	readonly="readonly"><br>
-		 <input type="submit"value="一覧表示">
+		<input type="text" name="userid" value="${userId }"	readonly="readonly">
+		<br>
+		 <button type="submit" class="viewbutton">一覧表示</button>
 	</form>
 	<a href="/TimeSheetApp/WelcomeServlet">
-		<button type="button">記入完了</button>
+		<button type="button" class="finishbutton">記入完了</button>
 	</a>
 </body>
 </html>
