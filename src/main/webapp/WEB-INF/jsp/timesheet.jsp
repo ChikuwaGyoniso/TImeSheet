@@ -8,7 +8,7 @@
 <title>TimeSheet</title>
 <head>
 <script src="/TimeSheetApp/js/timecalc.js"></script>
-<link rel="shortcut icon" href="/TimeSheetApp/img/favicon (1).ico">
+<link rel="shortcut icon" href="/TimeSheetApp/img/favicon.ico">
 <script>
 function check() {
 	var t1 = timesheet.start_time.value + ":";
