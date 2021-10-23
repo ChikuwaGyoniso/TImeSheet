@@ -8,6 +8,7 @@
 <title>TimeSheet</title>
 <head>
 <script src="/TimeSheetApp/js/timecalc.js"></script>
+<link rel="stylesheet" href="/TimeSheetApp/css/TimeRegisterscreenDesign.css">
 <link rel="shortcut icon" href="/TimeSheetApp/img/favicon.ico">
 <script>
 function check() {
@@ -51,18 +52,16 @@ function check() {
 
 </script>
 </head>
-
+<h1>労働時間と労働内容の登録</h1>
 <body>
 	<p>
 		ようこそ
 		<c:out value="${userId}" />
 		さん
 	</p>
-<h3>・労働時間と作業内容の入力</h3>
 	<p>業務終了には定時の終了時間を入力してください</p>
 	<form action="RegisterTimeServlet" method="post" name="timesheet">
-		ユーザーID：<input type="text" name="userid" value="${userId }"
-			readonly="readonly">
+	   <input type="text" name="userid" value="${userId }" readonly="readonly" style="display:none;">
 		<table border="1">
 			<tr>
 				<th>日にち</th>
@@ -99,7 +98,7 @@ function check() {
 			<p>${successMsg}</p>
 		</c:otherwise>
 	</c:choose>
-	<h3>・特定年月のデータをテーブル表示する</h3>
+	<h3>特定年月のデータをテーブル表示する</h3>
 	<form action="/TimeSheetApp/ViewTimeSheetServlet" method="post">
         <select name="year">
         <c:forEach var="year" begin="2021" end="2199" step="1">
