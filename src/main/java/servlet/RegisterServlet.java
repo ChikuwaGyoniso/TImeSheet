@@ -42,11 +42,17 @@ public class RegisterServlet extends HttpServlet {
 
 			User user = new User(userId, pass, mail, name);
 			RegisterLogic rl = new RegisterLogic();
-			rl.execute(user);
-			request.setAttribute("userId", userId);
-			request.setAttribute("successMsg", "ユーザー登録に成功しました");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
-			dispatcher.forward(request, response);
+
+			if (rl.execute(user)) {
+				request.setAttribute("userId", userId);
+				request.setAttribute("successMsg", "ユーザー登録に成功しました");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
+				dispatcher.forward(request, response);
+			} else {
+				request.setAttribute("errorMsg", "ユーザー登録に失敗しました。ユーザーIDが既に使われています。");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
+				dispatcher.forward(request, response);
+			}
 		}
 	}
 }
