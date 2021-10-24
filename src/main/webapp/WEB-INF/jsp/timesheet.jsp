@@ -57,8 +57,8 @@ function check() {
 </div>
 <h1>労働時間の登録</h1>
 <body>
-	<p>※フォームは左から順に記入をお願いします。</p>
-	<form action="RegisterTimeServlet" method="post" name="timesheet">
+	<p class="Annotation">※フォームは左から順に記入をお願いします。</p>
+	<form action="RegisterTimeServlet" method="post" name="timesheet" class="timesheet">
 	   <input type="text" name="userid" value="${userId }" readonly="readonly" style="display:none;">
 		<table border="1">
 			<tr>
@@ -77,15 +77,15 @@ function check() {
 				<td><input type="time" name="start_time" onChange="timecalc1();" required></td>
 				<td><input type="time" name="end_time" onChange="timecalc1();" required></td>
 				<td><input type="time" name="rest_time" onChange="timecalc1();" required></td>
-				<td><input type="text" name="nomal_time" readonly="readonly"></td>
+				<td><input type="text" name="nomal_time" readonly="readonly" size="5"></td>
 				<td><input type="time" name="midnight_time"	onChange="timecalc2();" required></td>
 				<td><input type="time" name="holiday_time"	onChange="timecalc2();" required></td>
 				<td><input type="time" name="holiday_midnight_time"	onChange="timecalc2();" required></td>
-				<td><input type="text" name="worktime_sum" readonly="readonly">
+				<td><input type="text" name="worktime_sum" readonly="readonly" size="6">
 			</tr>
-		</table>
+		</table><br>
 		<textarea name="work_contents" rows="5" cols="100" placeholder="作業内容を入力してください" required></textarea><br>
-		<input type="submit" value="登録" onClick="return check();"><br>
+		<button type="submit" onClick="return check();" class="register">登録</button><br>
 	</form>
 	<c:choose>
 		<c:when test="${not empty errorMsg}">
