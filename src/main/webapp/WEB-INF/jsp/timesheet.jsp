@@ -52,7 +52,7 @@ function check() {
 
 </script>
 </head>
-<h1>労働時間と労働内容の登録</h1>
+<h1>労働時間の登録</h1>
 <body>
 	<p>
 		ようこそ
@@ -110,8 +110,7 @@ function check() {
          <option><c:out value="${month}" /></option>
         </c:forEach>
        </select>
-		<input type="text" name="userid" value="${userId }"	readonly="readonly">
-		<br>
+		<input type="text" name="userid" value="${userId }"	readonly="readonly" style="display:none;">
 		 <button type="submit" class="viewbutton">一覧表示</button>
 	</form>
 	<a href="/TimeSheetApp/WelcomeServlet">
