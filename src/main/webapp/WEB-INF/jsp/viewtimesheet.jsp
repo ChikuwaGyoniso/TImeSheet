@@ -30,7 +30,7 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 			<th>業務開始</th>
 			<th>業務終了</th>
 			<th>業務内容</th>
-			<th>定時</th>
+			<th>通常</th>
 			<th>深夜</th>
 			<th>休日</th>
 			<th>休日深夜</th>
