@@ -52,14 +52,12 @@ function check() {
 
 </script>
 </head>
+<div class="heading" data-en="TimeSheet">
+	<span></span>
+</div>
 <h1>労働時間の登録</h1>
 <body>
-	<p>
-		ようこそ
-		<c:out value="${userId}" />
-		さん
-	</p>
-	<p>業務終了には定時の終了時間を入力してください</p>
+	<p>※フォームは左から順に記入をお願いします。</p>
 	<form action="RegisterTimeServlet" method="post" name="timesheet">
 	   <input type="text" name="userid" value="${userId }" readonly="readonly" style="display:none;">
 		<table border="1">
@@ -68,7 +66,7 @@ function check() {
 				<th>業務開始</th>
 				<th>業務終了</th>
 				<th>休憩時間</th>
-				<th>定時</th>
+				<th>通常</th>
 				<th>深夜</th>
 				<th>休日</th>
 				<th>休日深夜</th>
@@ -76,7 +74,6 @@ function check() {
 			</tr>
 			<tr>
 				<td><input type="date" name="date" max="9999-12-31" required></td>
-
 				<td><input type="time" name="start_time" onChange="timecalc1();" required></td>
 				<td><input type="time" name="end_time" onChange="timecalc1();" required></td>
 				<td><input type="time" name="rest_time" onChange="timecalc1();" required></td>
@@ -99,6 +96,7 @@ function check() {
 		</c:otherwise>
 	</c:choose>
 	<h3>特定年月のデータをテーブル表示する</h3>
+	<div>
 	<form action="/TimeSheetApp/ViewTimeSheetServlet" method="post">
         <select name="year">
         <c:forEach var="year" begin="2021" end="2199" step="1">
@@ -113,6 +111,7 @@ function check() {
 		<input type="text" name="userid" value="${userId }"	readonly="readonly" style="display:none;">
 		 <button type="submit" class="viewbutton">一覧表示</button>
 	</form>
+	</div>
 	<a href="/TimeSheetApp/WelcomeServlet">
 		<button type="button" class="finishbutton">記入完了</button>
 	</a>
