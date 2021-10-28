@@ -95,25 +95,23 @@ function check() {
 			<p>${successMsg}</p>
 		</c:otherwise>
 	</c:choose>
-	<h3>特定年月のデータをテーブル表示する</h3>
-	<div>
+	<p class="viewdata">特定年月のデータをテーブル表示する</p>
+	<div class="viewform">
 	<form action="/TimeSheetApp/ViewTimeSheetServlet" method="post">
         <select name="year">
         <c:forEach var="year" begin="2021" end="2199" step="1">
         <option><c:out value="${year}" /></option>
         </c:forEach>
-        </select>
+        </select>年
        <select name="month">
         <c:forEach var="month" begin="1" end="12" step="1">
          <option><c:out value="${month}" /></option>
         </c:forEach>
-       </select>
+       </select>日のデータを
 		<input type="text" name="userid" value="${userId }"	readonly="readonly" style="display:none;">
 		 <button type="submit" class="viewbutton">一覧表示</button>
 	</form>
-	</div>
-	<a href="/TimeSheetApp/WelcomeServlet">
-		<button type="button" class="finishbutton">記入完了</button>
-	</a>
+	<a href="/TimeSheetApp/WelcomeServlet">トップへ</a>
+  </div>
 </body>
 </html>
