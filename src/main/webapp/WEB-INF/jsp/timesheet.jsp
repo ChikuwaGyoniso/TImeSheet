@@ -85,7 +85,8 @@ function check() {
 			</tr>
 		</table><br>
 		<textarea name="work_contents" rows="5" cols="100" placeholder="作業内容を入力してください" required></textarea><br>
-		<button type="submit" onClick="return check();" class="register">登録</button><br>
+		<button type="submit" onClick="return check();" class="register">登録</button>
+		<button type="reset" class="reset">リセット</button>
 	</form>
 	<c:choose>
 		<c:when test="${not empty errorMsg}">
