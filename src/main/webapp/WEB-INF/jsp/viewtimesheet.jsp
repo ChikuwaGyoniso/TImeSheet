@@ -12,8 +12,10 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 <title>TimeSheet</title>
 <script src="https://code.jquery.com/jquery-3.2.1.js"
 	integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-	crossorigin="anonymous"></script>
-	<link rel="shortcut icon" href="/TimeSheetApp/img/favicon.ico">
+	crossorigin="anonymous">
+</script>
+<link rel="stylesheet" href="/TimeSheetApp/css/TimeSheetscreenDesign.css">
+<link rel="shortcut icon" href="/TimeSheetApp/img/favicon.ico">
 </head>
 <body>
 	<p>
