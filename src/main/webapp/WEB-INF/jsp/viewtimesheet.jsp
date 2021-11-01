@@ -79,7 +79,7 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 	<script src="/TimeSheetApp/js/nomaltimecalc.js" ></script>
 	<script src="/TimeSheetApp/js/all_worktimesum.js" ></script>
 
-	<input type="button" id="csv" value="CSV出力">
+	<button type="button" id="csv">CSV出力</button>
 	<a style="display: none" id="downloader" href="#"></a>
 	<script src="/TimeSheetApp/js/outputcsv.js"></script>
 	<a href="/TimeSheetApp/TimeSheetServlet">
