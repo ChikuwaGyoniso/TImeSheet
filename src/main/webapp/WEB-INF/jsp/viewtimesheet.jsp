@@ -13,15 +13,17 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 <script src="https://code.jquery.com/jquery-3.2.1.js"
 	integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
 	crossorigin="anonymous">
+
 </script>
-<link rel="stylesheet" href="/TimeSheetApp/css/TimeSheetscreenDesign.css">
+<link rel="stylesheet"
+	href="/TimeSheetApp/css/TimeSheetscreenDesign.css">
 <link rel="shortcut icon" href="/TimeSheetApp/img/favicon.ico">
 </head>
 <body>
-	<p>
+	<h1>
 		<c:out value="${userId}" />
 		さんのタイムシート
-	</p>
+	</h1>
 
 	<%
 	if (worktimelist != null && worktimelist.size() > 0) {
@@ -78,14 +80,16 @@ List<WorkTime> worktimelist = (List<WorkTime>) request.getAttribute("worktimelis
 	<%
 	}
 	%>
-	<script src="/TimeSheetApp/js/nomaltimecalc.js" ></script>
-	<script src="/TimeSheetApp/js/all_worktimesum.js" ></script>
-
-	<button type="button" id="csv">CSV出力</button>
-	<a style="display: none" id="downloader" href="#"></a>
-	<script src="/TimeSheetApp/js/outputcsv.js"></script>
-	<a href="/TimeSheetApp/TimeSheetServlet">
-		<button type="button">記入に戻る</button>
-	</a>
+	<script src="/TimeSheetApp/js/nomaltimecalc.js"></script>
+	<script src="/TimeSheetApp/js/all_worktimesum.js"></script>
+	<div style="text-align: center;">
+		<button type="button" id="csv" class="output">CSV出力</button>
+		<a style="display: none" id="downloader" href="#"></a>
+		<script src="/TimeSheetApp/js/outputcsv.js"></script>
+		<a href="/TimeSheetApp/TimeSheetServlet">
+			<button type="button" class="button">記入に戻る</button>
+		</a>
+	</div>
 </body>
+
 </html>
