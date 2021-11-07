@@ -90,10 +90,10 @@ function check() {
 	</form>
 	<c:choose>
 		<c:when test="${not empty errorMsg}">
-			<p>${errorMsg }</p>
+			<p class="errormsg">${errorMsg }</p>
 		</c:when>
 		<c:otherwise>
-			<p>${successMsg}</p>
+			<p class="sucessmsg">${successMsg}</p>
 		</c:otherwise>
 	</c:choose>
 	<p class="viewdata">特定年月のデータをテーブル表示する</p>
