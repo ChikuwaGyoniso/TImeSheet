@@ -115,6 +115,16 @@ textarea {
 	background: #ffffff;
 }
 
+.errormsg {
+	font-size: 20px;
+	text-align: center;
+}
+
+.sucessmsg {
+	font-size: 20px;
+	text-align: center;
+}
+
 .viewdata {
 	margin: 0;
 	padding: 0;
