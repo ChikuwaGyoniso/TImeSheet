@@ -1,26 +1,29 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import model.Login;
 import model.User;
 
-public class UserDAO {
-	//データベース接続に使用する情報
-	private final String JDBC_URL = "jdbc:mysql://localhost:3306/sampleappdb?characterEncording=UTF-8";
-	private final String DB_USER = "Sampleuser";
-	private final String DB_PASS = "chikuwanoowari458";
-	private final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
+public class UserDAO extends DataSourceManager {
 
 	public User findByLogin(Login login) {
 		User user = null;
-        //データベースに接続
-		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
-			Class.forName(DB_DRIVER);
+		Connection conn = null;
+		try {
+			Context ctx = new InitialContext();
+			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/mysql");
+
+			// データベースへ接続
+			conn = ds.getConnection();
 
 			String sql = "SELECT USER_ID, PASS, MAIL, NAME FROM APPUSER WHERE USER_ID = ? AND PASS = ?";
 
@@ -43,7 +46,7 @@ public class UserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (NamingException e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -51,8 +54,12 @@ public class UserDAO {
 	}
 
 	public boolean RegisterUser(User user) {
-		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
-			Class.forName(DB_DRIVER);
+		Connection conn = null;
+		try {
+			Context ctx = new InitialContext();
+			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/mysql");
+
+			conn = ds.getConnection();
 
 			String sql = "INSERT INTO APPUSER (USER_ID, PASS, MAIL, NAME) VALUES(?,?,?,?)";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -72,7 +79,7 @@ public class UserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
-		} catch (ClassNotFoundException e) {
+		} catch (NamingException e) {
 			e.printStackTrace();
 			return false;
 		}

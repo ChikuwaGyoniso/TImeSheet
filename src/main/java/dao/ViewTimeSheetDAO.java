@@ -2,7 +2,6 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,20 +9,25 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import model.User;
 import model.WorkTime;
 import model.YearAndMonth;
 
-public class ViewTimeSheetDAO {
-	private final String JDBC_URL = "jdbc:mysql://localhost:3306/sampleappdb?cahracterEncording=UTF-8";
-	private final String DB_USER = "Sampleuser";
-	private final String DB_PASS = "chikuwanoowari458";
-	private final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
+public class ViewTimeSheetDAO extends DataSourceManager {
 
 	public List<WorkTime> findAll(User user, YearAndMonth ymd) {
 		List<WorkTime> list = new ArrayList<>();
-		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
-			Class.forName(DB_DRIVER);
+		Connection conn = null;
+		try {
+			Context ctx = new InitialContext();
+			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/mysql");
+
+			conn = ds.getConnection();
 			String sql = "SELECT * FROM timesheet WHERE USER_ID = ? AND DATE_FORMAT(Date,'%Y')=? AND DATE_FORMAT(Date,'%m')= ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 
@@ -57,7 +61,7 @@ public class ViewTimeSheetDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (NamingException e) {
 			e.printStackTrace();
 			return null;
 		}

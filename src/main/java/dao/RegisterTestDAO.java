@@ -2,27 +2,32 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import model.User;
 import model.WorkTime;
 
-public class RegisterTestDAO {
-	private final String JDBC_URL = "jdbc:mysql://localhost:3306/sampleappdb?characterEncording=UTF-8";
-	private final String DB_USER = "Sampleuser";
-	private final String DB_PASS = "chikuwanoowari458";
-	private final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
+public class RegisterTestDAO extends DataSourceManager {
 
 	//登録テストで登録されたテストユーザーを削除する
 	public boolean DeleteUser(User user) {
-		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
-			Class.forName(DB_DRIVER);
-
+		Connection conn = null;
+		try {
 			String sql = "DELETE FROM APPUSER WHERE USER_ID = ?";
+
+			Context ctx = new InitialContext();
+			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/world");
+
+			// データベースへ接続
+			conn = ds.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "testUser");
 
@@ -34,16 +39,21 @@ public class RegisterTestDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
-		} catch (ClassNotFoundException e) {
+		} catch (NamingException e) {
 			e.printStackTrace();
 			return false;
 		}
 		return true;
 	}
-	public boolean DeleteTimeData(WorkTime worktime) {
-		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
-			Class.forName(DB_DRIVER);
 
+	public boolean DeleteTimeData(WorkTime worktime) {
+		Connection conn = null;
+		try {
+			Context ctx = new InitialContext();
+			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/world");
+
+			// データベースへ接続
+			conn = ds.getConnection();
 			String sql = "DELETE FROM TIMESHEET WHERE USER_ID = ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "testUser");
@@ -56,18 +66,22 @@ public class RegisterTestDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
-		} catch (ClassNotFoundException e) {
+		} catch (NamingException e) {
 			e.printStackTrace();
 			return false;
 		}
 		return true;
 	}
+
 	//時間登録テストで時間が登録されているかのテスト
 	public WorkTime testFindByTime(WorkTime worktime) {
+		Connection conn = null;
+		try {
+			Context ctx = new InitialContext();
+			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/mysql");
 
-		try(Connection conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS)){
-			Class.forName(DB_DRIVER);
-
+			// データベースへ接続
+			conn = ds.getConnection();
 			String sql = "SELECT USER_ID,DATE,START_TIME,END_TIME,WORK_CONTENTS,NOMAL_TIME,MIDNIGHT_TIME,HOLIDAY_TIME,HOLIDAY_MIDNIGHT_TIME,"
 					+ "WORKTIME_SUM FROM TIMESHEET WHERE USER_ID = ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -75,7 +89,7 @@ public class RegisterTestDAO {
 
 			ResultSet rs = pstmt.executeQuery();
 
-			if(rs.next()) {
+			if (rs.next()) {
 				String userid = rs.getString("USER_ID");
 				Date date = rs.getDate("DATE");
 				Time start_time = rs.getTime("START_TIME");
@@ -86,13 +100,14 @@ public class RegisterTestDAO {
 				Time holiday_time = rs.getTime("HOLIDAY_TIME");
 				Time holiday_midnight_time = rs.getTime("HOLIDAY_MIDNIGHT_TIME");
 				Time worktime_sum = rs.getTime("WORKTIME_SUM");
-				worktime = new WorkTime(userid,date,start_time,end_time,work_contents,nomal_time,midnight_time,holiday_time,holiday_midnight_time,worktime_sum);
+				worktime = new WorkTime(userid, date, start_time, end_time, work_contents, nomal_time, midnight_time,
+						holiday_time, holiday_midnight_time, worktime_sum);
 
 			}
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
-		}catch(ClassNotFoundException e) {
+		} catch (NamingException e) {
 			e.printStackTrace();
 			return null;
 		}
