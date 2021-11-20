@@ -4,13 +4,13 @@
       name="jdbc/mysql"
       auth="Container"
       type="javax.sql.DataSource"
-      driverClassName="com.mysql.jdbc.Driver"
+      driverClassName="com.mysql.cj.jdbc.Driver"
       url="jdbc:mysql://localhost:3306/sampleappdb?characterEncording=UTF-8"
-      connectionProperties="autoReconnect=true;verifyServerCertificate=false;useSSL=false;requireSSL=false"
+      connectionProperties="autoReconnect=true;verifyServerCertificate=false;useSSL=false;requireSSL=false;allowPublicKeyRetrieval=true"
       username="Sampleuser"
       password="chikuwanoowari458"
       maxActive="30"
       maxIdle="10"
-      maxWait="100000"
+      maxWait="10000"
       validationQuery="select 1"/>
  </Context>
