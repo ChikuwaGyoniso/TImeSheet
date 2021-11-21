@@ -1,14 +1,8 @@
 package dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 
 import model.Login;
 import model.User;
@@ -17,17 +11,11 @@ public class UserDAO extends DataSourceManager {
 
 	public User findByLogin(Login login) {
 		User user = null;
-		Connection conn = null;
 		try {
-			Context ctx = new InitialContext();
-			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/mysql");
-
-			// データベースへ接続
-			conn = ds.getConnection();
 
 			String sql = "SELECT USER_ID, PASS, MAIL, NAME FROM APPUSER WHERE USER_ID = ? AND PASS = sha2(?,256)";
 
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			PreparedStatement pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, login.getUserId());
 			pstmt.setString(2, login.getPass());
 
@@ -46,23 +34,15 @@ public class UserDAO extends DataSourceManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
-		} catch (NamingException e) {
-			e.printStackTrace();
-			return null;
 		}
 		return user;
 	}
 
 	public boolean RegisterUser(User user) {
-		Connection conn = null;
 		try {
-			Context ctx = new InitialContext();
-			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/mysql");
-
-			conn = ds.getConnection();
 
 			String sql = "INSERT INTO APPUSER (USER_ID, PASS, MAIL, NAME) VALUES(?,SHA2(?,256),?,?)";
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			PreparedStatement pstmt = connection.prepareStatement(sql);
 
 			//Insert文中の「？」も使用する値を設定しSQLを完成
 			pstmt.setString(1, user.getUserId());
@@ -77,9 +57,6 @@ public class UserDAO extends DataSourceManager {
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		} catch (NamingException e) {
 			e.printStackTrace();
 			return false;
 		}

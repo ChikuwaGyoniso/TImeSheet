@@ -19,16 +19,10 @@ public class RegisterTestDAO extends DataSourceManager {
 
 	//登録テストで登録されたテストユーザーを削除する
 	public boolean DeleteUser(User user) {
-		Connection conn = null;
 		try {
 			String sql = "DELETE FROM APPUSER WHERE USER_ID = ?";
 
-			Context ctx = new InitialContext();
-			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/world");
-
-			// データベースへ接続
-			conn = ds.getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			PreparedStatement pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, "testUser");
 
 			int result = pstmt.executeUpdate();
@@ -37,9 +31,6 @@ public class RegisterTestDAO extends DataSourceManager {
 				return false;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		} catch (NamingException e) {
 			e.printStackTrace();
 			return false;
 		}
@@ -47,15 +38,10 @@ public class RegisterTestDAO extends DataSourceManager {
 	}
 
 	public boolean DeleteTimeData(WorkTime worktime) {
-		Connection conn = null;
-		try {
-			Context ctx = new InitialContext();
-			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/world");
 
-			// データベースへ接続
-			conn = ds.getConnection();
+		try {
 			String sql = "DELETE FROM TIMESHEET WHERE USER_ID = ?";
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			PreparedStatement pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, "testUser");
 
 			int result = pstmt.executeUpdate();
@@ -64,9 +50,6 @@ public class RegisterTestDAO extends DataSourceManager {
 				return false;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		} catch (NamingException e) {
 			e.printStackTrace();
 			return false;
 		}

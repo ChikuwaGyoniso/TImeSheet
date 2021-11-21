@@ -1,32 +1,19 @@
 package dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 
 import model.WorkTime;
 
 public class TimeDAO extends DataSourceManager {
 
 	public boolean RegisterTime(WorkTime worktime) {
-		Connection conn = null;
 		try {
-
-			Context ctx = new InitialContext();
-			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/mysql");
-
-			// データベースへ接続
-			conn = ds.getConnection();
 
 			String sql = "INSERT INTO TIMESHEET (USER_ID,DATE, START_TIME, END_TIME, WORK_CONTENTS,NOMAL_TIME,"
 					+ " MIDNIGHT_TIME, HOLIDAY_TIME, HOLIDAY_MIDNIGHT_TIME, WORKTIME_SUM) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			PreparedStatement pstmt = connection.prepareStatement(sql);
 			//Insert文中の「？」も使用する値を設定しSQLを完成
 			pstmt.setString(1, worktime.getUserId());
 			pstmt.setDate(2, worktime.getDate());
@@ -47,8 +34,6 @@ public class TimeDAO extends DataSourceManager {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
-		} catch (NamingException e) {
 			return false;
 		}
 		return true;
