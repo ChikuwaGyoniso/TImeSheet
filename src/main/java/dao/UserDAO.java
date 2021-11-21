@@ -25,7 +25,7 @@ public class UserDAO extends DataSourceManager {
 			// データベースへ接続
 			conn = ds.getConnection();
 
-			String sql = "SELECT USER_ID, PASS, MAIL, NAME FROM APPUSER WHERE USER_ID = ? AND PASS = ?";
+			String sql = "SELECT USER_ID, PASS, MAIL, NAME FROM APPUSER WHERE USER_ID = ? AND PASS = sha2(?,256)";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, login.getUserId());
@@ -61,7 +61,7 @@ public class UserDAO extends DataSourceManager {
 
 			conn = ds.getConnection();
 
-			String sql = "INSERT INTO APPUSER (USER_ID, PASS, MAIL, NAME) VALUES(?,?,?,?)";
+			String sql = "INSERT INTO APPUSER (USER_ID, PASS, MAIL, NAME) VALUES(?,SHA2(?,256),?,?)";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 
 			//Insert文中の「？」も使用する値を設定しSQLを完成
