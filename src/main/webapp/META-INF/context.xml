@@ -11,6 +11,6 @@
       password="chikuwanoowari458"
       maxActive="30"
       maxIdle="10"
-      maxWait="100000"
+      maxWait="10000"
       validationQuery="select 1"/>
  </Context>
