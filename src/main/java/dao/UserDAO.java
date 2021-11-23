@@ -13,7 +13,7 @@ public class UserDAO extends DataSourceManager {
 		User user = null;
 		try {
 
-			String sql = "SELECT USER_ID, PASS, MAIL, NAME FROM APPUSER WHERE USER_ID = ? AND PASS = sha2(?,256)";
+			String sql = "SELECT USER_ID, PASS, MAIL, NAME FROM APPUSER WHERE USER_ID = ? AND PASS = SHA2(?,256)";
 
 			PreparedStatement pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, login.getUserId());
