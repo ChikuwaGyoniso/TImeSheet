@@ -10,6 +10,7 @@
       username="Sampleuser"
       password="chikuwanoowari458"
       maxActive="30"
+      maxTotal="5"
       maxIdle="10"
       maxWait="10000"
       validationQuery="select 1"/>
