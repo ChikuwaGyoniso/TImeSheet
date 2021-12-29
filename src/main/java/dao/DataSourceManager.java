@@ -17,7 +17,6 @@ public class DataSourceManager {
 			Context context = new InitialContext();
 			DataSource dataSource = (DataSource) context.lookup(JNDI);
 			connection = dataSource.getConnection();
-			connection.setAutoCommit(false);
 
 		} catch (NamingException e) {
 			e.printStackTrace();
