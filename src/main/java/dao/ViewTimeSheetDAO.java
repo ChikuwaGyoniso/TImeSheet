@@ -18,7 +18,7 @@ public class ViewTimeSheetDAO extends DataSourceManager {
 		List<WorkTime> list = new ArrayList<>();
 		try {
 
-			String sql = "SELECT * FROM timesheet WHERE USER_ID = ? AND DATE_FORMAT(Date,'%Y')=? AND DATE_FORMAT(Date,'%m')= ?";
+			String sql = "SELECT * FROM TIMESHEET WHERE USER_ID = ? AND DATE_FORMAT(DATE,'%Y')=? AND DATE_FORMAT(DATE,'%m')= ?";
 			PreparedStatement pstmt = connection.prepareStatement(sql);
 
 			pstmt.setString(1, user.getUserId());
