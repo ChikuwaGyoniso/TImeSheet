@@ -5,7 +5,7 @@
       auth="Container"
       type="javax.sql.DataSource"
       driverClassName="com.mysql.cj.jdbc.Driver"
-      url="jdbc:mysql://localhost:3306/sampleappdb?characterEncording=UTF-8"
+      url="jdbc:mysql://history.cyjlozcjimgw.ap-northeast-1.rds.amazonaws.com/sampleappdb?characterEncoding=UTF-8"
       connectionProperties="autoReconnect=true;verifyServerCertificate=false;useSSL=false;requireSSL=false;allowPublicKeyRetrieval=true"
       username="Sampleuser"
       password="chikuwanoowari458"
