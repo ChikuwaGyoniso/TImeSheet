@@ -10,7 +10,7 @@ public class TimeDAO extends DataSourceManager {
 	public boolean RegisterTime(WorkTime worktime) {
 		try {
 
-			String sql = "INSERT INTO TIMESHEET (USER_ID,DATE, START_TIME, END_TIME, WORK_CONTENTS,NOMAL_TIME,"
+			String sql = "INSERT INTO TIMESHEET (USER_ID, DATE, START_TIME, END_TIME, WORK_CONTENTS,NORMAL_TIME,"
 					+ " MIDNIGHT_TIME, HOLIDAY_TIME, HOLIDAY_MIDNIGHT_TIME, WORKTIME_SUM) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement pstmt = connection.prepareStatement(sql);
