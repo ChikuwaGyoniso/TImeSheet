@@ -12,6 +12,6 @@
       maxActive="30"
       maxTotal="5"
       maxIdle="10"
-      maxWait="10000"
+      maxWait="1000"
       validationQuery="select 1"/>
  </Context>
