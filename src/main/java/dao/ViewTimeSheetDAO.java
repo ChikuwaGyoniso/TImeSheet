@@ -32,16 +32,16 @@ public class ViewTimeSheetDAO extends DataSourceManager {
 			while (rs.next()) {
 
 				//SELECTの結果をArrayListに格納
-				String userid = rs.getString("User_Id");
-				Date date = rs.getDate("date");
-				Time start_time = rs.getTime("Start_Time");
-				Time end_time = rs.getTime("End_Time");
-				String work_contents = rs.getString("Work_Contents");
-				Time nomal_time = rs.getTime("Nomal_Time");
-				Time midnight_time = rs.getTime("Midnight_Time");
-				Time holiday_time = rs.getTime("Holiday_Time");
-				Time holiday_midnight_time = rs.getTime("Holiday_Midnight_Time");
-				Time worktime_sum = rs.getTime("WorkTime_Sum");
+				String userid = rs.getString("USER_ID");
+				Date date = rs.getDate("DATE");
+				Time start_time = rs.getTime("START_TIME");
+				Time end_time = rs.getTime("END_TIME");
+				String work_contents = rs.getString("WORK_CONTENTS");
+				Time nomal_time = rs.getTime("NORMAL_TIME");
+				Time midnight_time = rs.getTime("MIDNIGHT_TIME");
+				Time holiday_time = rs.getTime("HOLIDAY_TIME");
+				Time holiday_midnight_time = rs.getTime("HOLIDAY_MIDNIGHT_TIME");
+				Time worktime_sum = rs.getTime("WORKTIME_SUM");
 				worktime = new WorkTime(userid, date, start_time, end_time, work_contents,
 						nomal_time, midnight_time, holiday_time, holiday_midnight_time, worktime_sum);
 				list.add(worktime);
