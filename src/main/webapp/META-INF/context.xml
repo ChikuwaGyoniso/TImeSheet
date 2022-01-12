@@ -9,8 +9,7 @@
       connectionProperties="autoReconnect=true;verifyServerCertificate=false;useSSL=false;requireSSL=false;allowPublicKeyRetrieval=true"
       username="Sampleuser"
       password="chikuwanoowari458"
-      maxActive="30"
-      maxTotal="5"
+      maxTotal="8"
       maxIdle="10"
       maxWaitMillis="5000"
       validationQuery="select 1"/>
