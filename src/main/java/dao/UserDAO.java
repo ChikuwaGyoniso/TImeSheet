@@ -31,9 +31,19 @@ public class UserDAO extends DataSourceManager {
 				String name = rs.getString("NAME");
 				user = new User(userId, pass, mail, name);
 			}
+			pstmt.close();
+			rs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return user;
 	}
@@ -55,10 +65,18 @@ public class UserDAO extends DataSourceManager {
 			if (result != 1) {
 				return false;
 			}
-
+			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return true;
 

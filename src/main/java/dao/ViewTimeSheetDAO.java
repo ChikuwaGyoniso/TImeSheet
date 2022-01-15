@@ -47,10 +47,19 @@ public class ViewTimeSheetDAO extends DataSourceManager {
 				list.add(worktime);
 
 			}
-
+			pstmt.close();
+			rs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return list;
 	}

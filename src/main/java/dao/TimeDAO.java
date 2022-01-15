@@ -31,10 +31,18 @@ public class TimeDAO extends DataSourceManager {
 			if (result != 1) {
 				return false;
 			}
-
+			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return true;
 	}

@@ -9,9 +9,12 @@
       connectionProperties="autoReconnect=true;verifyServerCertificate=false;useSSL=false;requireSSL=false;allowPublicKeyRetrieval=true"
       username="Sampleuser"
       password="chikuwanoowari458"
-      initialSize="2"
+      initialSize="10"
+      maxActive="2"
       maxTotal="8"
       maxIdle="10"
       maxWaitMillis="5000"
+      removeAbandonedOnBorrow="true"
+      removeAbandonedTimeout="300"
       validationQuery="select 1"/>
  </Context>
