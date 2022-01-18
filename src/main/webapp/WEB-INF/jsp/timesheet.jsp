@@ -108,7 +108,7 @@ function check() {
         <c:forEach var="month" begin="1" end="12" step="1">
          <option><c:out value="${month}" /></option>
         </c:forEach>
-       </select>日のデータを
+       </select>月のデータを
 		<input type="text" name="userid" value="${userId }"	readonly="readonly" style="display:none;">
 		 <button type="submit" class="viewbutton">一覧表示</button>
 	</form>
